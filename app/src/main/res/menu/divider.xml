@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/movie"
+            android:icon="@drawable/cinema"
+            android:title="Movie" />
+        <item
+            android:id="@+id/tv"
+            android:icon="@drawable/ic_people_outline_black_24px"
+            android:title="Tvshows" />
+    </group>
+
+</menu>

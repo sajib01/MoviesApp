@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_height="70dp"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_margin="8dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/activity_description_cast_layout_actorimage"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        app:civ_border_color="@android:color/black"
+        app:civ_border_width="1dp"
+        android:src="@drawable/reyon"
+
+        />
+    <TextView
+        android:id="@+id/activity_description_cast_layout_actorname"
+        android:layout_width="wrap_content"
+        android:text="ShahRukh Khan"
+        android:layout_toRightOf="@+id/activity_description_cast_layout_actorimage"
+        android:textSize="18sp"
+        android:textColor="@android:color/black"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/dummy"
+        android:layout_width="wrap_content"
+        android:text="as"
+        android:layout_toRightOf="@+id/activity_description_cast_layout_actorimage"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/activity_description_cast_layout_actorname"
+        android:textSize="18sp"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/activity_description_cast_layout_charatername"
+        android:layout_width="wrap_content"
+        android:text="Dilwale"
+        android:layout_toRightOf="@+id/activity_description_cast_layout_actorimage"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/activity_description_cast_layout_actorname"
+        android:textSize="18sp"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>
