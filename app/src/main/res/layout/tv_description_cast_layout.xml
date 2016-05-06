@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="120dp"
+    android:layout_height="220dp"
+    app:cardElevation="6dp"
+    app:cardUseCompatPadding="true"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+<ImageView
+    android:id="@+id/tv_description_cast_layout_profileimage"
+    android:layout_width="match_parent"
+    android:scaleType="fitXY"
+    android:layout_height="130dp" />
+    <TextView
+        android:id="@+id/tv_description_cast_layout_actorname"
+        android:layout_width="wrap_content"
+        android:text="barry allen"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:layout_margin="4dp"
+        android:layout_gravity="start"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/tv_description_cast_layout_charactername"
+        android:layout_width="wrap_content"
+        android:text="gandolf"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:layout_gravity="start"
+        android:layout_marginLeft="4dp"
+        android:layout_height="wrap_content" />
+    </LinearLayout>
+</android.support.v7.widget.CardView>

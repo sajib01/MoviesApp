@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    >
+<Button
+    android:id="@+id/wallapaper"
+    android:visibility="invisible"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Set As Wallpaper"
+    android:layout_gravity="end"
+    />
+
+
+    <it.sephiroth.android.library.imagezoom.ImageViewTouch
+        android:id="@+id/piczoom_image"
+        android:visibility="invisible"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:src="@drawable/reyon"
+        />
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</FrameLayout>
