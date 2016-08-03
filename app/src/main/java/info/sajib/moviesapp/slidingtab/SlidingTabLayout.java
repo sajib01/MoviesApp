@@ -230,7 +230,6 @@ public class SlidingTabLayout extends HorizontalScrollView {
             }
 
             scrollTo(targetScrollX, 0);
-            Log.d("sajibTab",tabIndex+"offset"+positionOffset+"selectedchild"+selectedChild.getLeft());
         }
     }
 

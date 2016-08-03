@@ -1,21 +1,10 @@
 package info.sajib.moviesapp.pagetransformer;
 
-import android.animation.AnimatorSet;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Matrix;
-import android.graphics.Rect;
 import android.support.v4.view.ViewPager;
-import android.support.v4.view.animation.FastOutSlowInInterpolator;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewPropertyAnimator;
 import android.view.animation.Animation;
-import android.view.animation.AnimationSet;
-import android.view.animation.AnimationUtils;
-import android.view.animation.ScaleAnimation;
-import android.view.animation.TranslateAnimation;
 
 import java.util.Random;
 
@@ -31,7 +20,6 @@ public class Zoompagetransformer implements ViewPager.PageTransformer {
         this.context = context;
     }
 
-    Animation animation;
     private static final float MIN_SCALE = 0.75f;
 
     public void transformPage(final View view, float position) {
