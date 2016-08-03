@@ -37,10 +37,11 @@ public class Cast_details_adapter extends RecyclerView.Adapter<Cast_details_adap
     private static final int TYPE2=2;
     private static final int TYPE3=3;
     private ImageLoader imageLoader;
-    Context context;
-    List<PersonDetails> data= Collections.emptyList();
-    List<Movie> listitem=Collections.emptyList();
-    List<Upcoming> list=Collections.emptyList();
+    private Context context;
+    private List<PersonDetails> data= Collections.emptyList();
+    private List<Movie> listitem=Collections.emptyList();
+    private List<Upcoming> list=Collections.emptyList();
+
     public Cast_details_adapter(Context context, List<PersonDetails> data, List<Movie> listitem, List<Upcoming> list)
     {
         this.context=context;
@@ -70,7 +71,7 @@ public class Cast_details_adapter extends RecyclerView.Adapter<Cast_details_adap
         switch (holder.getItemViewType())
         {
             case TYPE1:
-                Log.d("recyclerhero", String.valueOf(listitem.size()));
+
                 final Firstviewholder fholder= (Firstviewholder) holder;
                 PersonDetails personDetails=data.get(0);
                 fholder.actorbirthday.setText(personDetails.getBirthdate());

@@ -20,8 +20,9 @@ import info.sajib.moviesapp.pojo.Movie;
  * Created by sajib on 13-03-2016.
  */
 public class KnownforAdapter extends RecyclerView.Adapter<KnownforAdapter.MyViewholder> {
-    Context context;
-    List<Movie> listitem= Collections.emptyList();
+    private Context context;
+    private List<Movie> listitem= Collections.emptyList();
+
     public KnownforAdapter(Context context, List<Movie> listitem) {
         this.context=context;
         this.listitem=listitem;

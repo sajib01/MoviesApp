@@ -20,9 +20,11 @@ import info.sajib.moviesapp.volleysingleton.VolleySingleton;
  * Created by sajib on 13-04-2016.
  */
 public class Tv_description_viewpageraddapter extends PagerAdapter {
-    Context context;
-    List<String> backdrops= Collections.emptyList();
-    ImageLoader imageLoader;
+
+    private Context context;
+    private List<String> backdrops= Collections.emptyList();
+    private ImageLoader imageLoader;
+
     public Tv_description_viewpageraddapter(Context context, List<String> backdrops) {
         this.context=context;
         this.backdrops=backdrops;

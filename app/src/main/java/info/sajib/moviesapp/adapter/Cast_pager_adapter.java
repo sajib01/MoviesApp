@@ -21,11 +21,11 @@ import info.sajib.moviesapp.pojo.Movie;
  * Created by sajib on 11-03-2016.
  */
 public class Cast_pager_adapter extends PagerAdapter {
-    Context context;
-    int id;
+    private Context context;
+    private int id;
     private RequestQueue requestque;
     private ImageLoader imageLoader;
-    List<Movie> listitem = Collections.emptyList();
+    private List<Movie> listitem = Collections.emptyList();
 
     public Cast_pager_adapter(Context context, List<Movie> listitem) {
         this.listitem = listitem;
@@ -67,10 +67,7 @@ public class Cast_pager_adapter extends PagerAdapter {
         container.addView(itemview);
         return itemview;
     }
-    public static void started()
-    {
 
-    }
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
         container.removeView((FrameLayout) object);

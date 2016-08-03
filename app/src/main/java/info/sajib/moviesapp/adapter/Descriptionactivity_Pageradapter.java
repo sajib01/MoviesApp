@@ -29,9 +29,10 @@ import info.sajib.moviesapp.volleysingleton.VolleySingleton;
  * Created by sajib on 07-04-2016.
  */
 public class Descriptionactivity_Pageradapter extends PagerAdapter {
-    List<Movie> data = Collections.emptyList();
-    ImageLoader imageLoader;
-    Context context;
+    private List<Movie> data = Collections.emptyList();
+    private ImageLoader imageLoader;
+    private Context context;
+
     public Descriptionactivity_Pageradapter(Context context, List<Movie> data) {
         this.context = context;
         this.data = data;
@@ -65,7 +66,6 @@ public class Descriptionactivity_Pageradapter extends PagerAdapter {
         }
         if(movie.getName()==null)
         {
-
             url=Endpoint.IMAGE+"/w500/"+movie.getBackdropPath();
         }
         imageLoader.get(url, new ImageLoader.ImageListener() {

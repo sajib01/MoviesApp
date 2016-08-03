@@ -24,8 +24,8 @@ import info.sajib.moviesapp.volleysingleton.VolleySingleton;
  */
 public class Main_screen_Adapter2 extends RecyclerView.Adapter<Main_screen_Adapter2.Mainviewholder> {
 
-    Context context;
-    List<Movie> listitem = Collections.emptyList();
+    private Context context;
+    private List<Movie> listitem = Collections.emptyList();
 
     public Main_screen_Adapter2(Context context, List<Movie> listitem) {
         this.context = context;
@@ -41,7 +41,6 @@ public class Main_screen_Adapter2 extends RecyclerView.Adapter<Main_screen_Adapt
     public void onBindViewHolder(final Main_screen_Adapter2.Mainviewholder holder, int position) {
         Movie movie = listitem.get(position);
         String Url = Endpoint.IMAGE + "/w185/" + movie.getPosterPath();
-
         Picasso.with(context).load(Url).error(R.drawable.yoimage).into(holder.imageView);
 
     }

@@ -31,8 +31,7 @@
         android:layout_below="@+id/tv_description_layout_viewpager"
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@+id/onee"
-        android:text="agent of shields"
-        android:textColor="#000000"
+        android:textColor="#4495f7"
         android:textSize="20sp" />
 
     <TextView
@@ -55,7 +54,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:layout_toRightOf="@+id/one"
-        android:text="first air date"
+        android:textColor="#113a66"
         android:textSize="14sp" />
 
     <TextView
@@ -78,7 +77,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:layout_toRightOf="@+id/two"
-        android:text="last air date"
+        android:textColor="#113a66"
         android:textSize="14sp" />
     <TextView
         android:id="@+id/twoo"
@@ -100,7 +99,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:layout_toRightOf="@+id/two"
-        android:text="6.5"
+        android:textColor="#113a66"
         android:textSize="14sp" />
     <TextView
         android:id="@+id/twooo"
@@ -122,7 +121,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:layout_toRightOf="@+id/twooo"
-        android:text="action,comedy"
+        android:textColor="#113a66"
         android:textSize="14sp" />
 
     <TextView
@@ -144,7 +143,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:layout_toRightOf="@+id/onee"
-        android:text="Joss Whedon, Jed Whedon, Maurissa Tancharoen"
+        android:textColor="#113a66"
         android:textSize="14sp" />
 
     <TextView
@@ -166,7 +165,7 @@
         android:layout_marginLeft="12dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="8dp"
-        android:text="Agent Phil Coulson of S.H.I.E.L.D. (Strategic Homeland Intervention, Enforcement and Logistics Division) puts together a team of agents to investigate the new, the strange and the unknown around the globe, protecting the ordinary from the extraordinary."
+        android:textColor="#113a66"
         android:textSize="14sp" />
 
 </RelativeLayout>

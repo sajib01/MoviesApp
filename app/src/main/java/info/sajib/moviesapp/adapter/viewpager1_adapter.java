@@ -27,9 +27,10 @@ import info.sajib.moviesapp.volleysingleton.VolleySingleton;
  */
 public class viewpager1_adapter extends PagerAdapter {
 
-    ImageLoader imageLoader;
-    Context context;
-    List<Tv> tvitem= Collections.emptyList();
+    private ImageLoader imageLoader;
+    private Context context;
+    private List<Tv> tvitem= Collections.emptyList();
+
     public viewpager1_adapter(Context context) {
         this.context=context;
         imageLoader= VolleySingleton.getInstance().getImageLoader();
@@ -54,7 +55,7 @@ public class viewpager1_adapter extends PagerAdapter {
         final Tv tv=tvitem.get(position);
         textView.setText(tv.getOriginalname());
         if(tv.getBackdrop()!=null) {
-            String url = Endpoint.IMAGE + "/w300/" + tv.getBackdrop();
+            String url = Endpoint.IMAGE + "/w500/" + tv.getBackdrop();
             imageLoader.get(url, new ImageLoader.ImageListener() {
                 @Override
                 public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {

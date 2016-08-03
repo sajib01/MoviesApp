@@ -16,15 +16,16 @@ import info.sajib.moviesapp.R;
  * Created by sajib on 14-03-2016.
  */
 public class TrailerActivity extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener {
-    String trailerid;
-    YouTubePlayerView youTubeView;
+    private String trailerid;
+    private YouTubePlayerView youTubeView;
     private static final int RECOVERY_REQUEST = 1;
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setContentView(R.layout.trailer);
+
         trailerid=getIntent().getStringExtra("trailerid");
-        Log.d("trailerid", trailerid);
+
         youTubeView = (YouTubePlayerView) findViewById(R.id.youtubeplayer);
         youTubeView.initialize(MyApplication.YOUTUBE_API_KEY, this);
     }

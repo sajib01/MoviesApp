@@ -11,6 +11,7 @@ import android.view.View;
  * Created by sajib on 14-03-2016.
  */
 final class FlingBehavior extends AppBarLayout.Behavior {
+
     private static final int TOP_CHILD_FLING_THRESHOLD = 3;
     private boolean isPositive;
 

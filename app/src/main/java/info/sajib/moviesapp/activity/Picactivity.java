@@ -33,21 +33,24 @@ import info.sajib.moviesapp.volleysingleton.VolleySingleton;
  * Created by sajib on 24-04-2016.
  */
 public class Picactivity extends AppCompatActivity {
-    long posterpath;
-    RecyclerView recyclerview;
-    Picactivity_adapter picadapter;
-    List<Backdrop> item=new ArrayList<>();
-    RequestQueue requestqueue;
+    private long posterpath;
+    private RecyclerView recyclerview;
+    private Picactivity_adapter picadapter;
+    private List<Backdrop> item=new ArrayList<>();
+    private RequestQueue requestqueue;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.picactivity);
+
         requestqueue= VolleySingleton.getInstance().getRequestQueue();
         posterpath=getIntent().getLongExtra("movieid",0);
         sendjsonrequest();
+
         recyclerview= (RecyclerView) findViewById(R.id.picactivity_recyclerview);
         GridLayoutManager layoutmanager=new GridLayoutManager(this,4);
         layoutmanager.setSpanCount(2);
+
         picadapter=new Picactivity_adapter(this);
         recyclerview.setLayoutManager(layoutmanager);
         recyclerview.setAdapter(picadapter);

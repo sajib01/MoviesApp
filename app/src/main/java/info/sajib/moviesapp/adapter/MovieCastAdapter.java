@@ -21,8 +21,9 @@ import info.sajib.moviesapp.pojo.Casts;
  * Created by sajib on 09-04-2016.
  */
 public class MovieCastAdapter extends RecyclerView.Adapter<MovieCastAdapter.Viewholder>{
-    Context context;
-    List<Casts> castses= Collections.emptyList();
+    private Context context;
+    private List<Casts> castses= Collections.emptyList();
+
     public MovieCastAdapter(Context context, List<Casts> castsList)
     {
         this.castses=castsList;

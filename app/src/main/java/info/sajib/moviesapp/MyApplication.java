@@ -11,7 +11,6 @@ import android.util.Log;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-;
 
 /**
  * Created by sajib on 11-02-2016.

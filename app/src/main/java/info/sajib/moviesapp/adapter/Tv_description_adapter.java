@@ -37,21 +37,20 @@ import info.sajib.moviesapp.volleysingleton.VolleySingleton;
  * Created by sajib on 12-04-2016.
  */
 public class Tv_description_adapter extends RecyclerView.Adapter<Tv_description_adapter.Tvholder>{
-    List<String> genre = Collections.emptyList();
-    List<Tv> tvdata = Collections.emptyList();
-    List<Tvcast> tvcastdata = Collections.emptyList();
-    List<String> backdrops = Collections.emptyList();
-    List<String> creaditedby = Collections.emptyList();
-    List<Tvsimilar> tvsimilars = Collections.emptyList();
-    List<String> generalinformation = Collections.emptyList();
-    Context context;
+    private List<String> genre = Collections.emptyList();
+    private List<Tv> tvdata = Collections.emptyList();
+    private List<Tvcast> tvcastdata = Collections.emptyList();
+    private List<String> backdrops = Collections.emptyList();
+    private List<String> creaditedby = Collections.emptyList();
+    private List<Tvsimilar> tvsimilars = Collections.emptyList();
+    private List<String> generalinformation = Collections.emptyList();
+    private Context context;
 
     private static final int TYPE0 = 0;
     private static final int TYPE1 = 1;
     private static final int TYPE2 = 2;
     private static final int TYPE3 = 3;
-    private static final int TYPE4 = 4;
-    ImageLoader imageLoader;
+    private ImageLoader imageLoader;
 
     public Tv_description_adapter(Context context) {
 

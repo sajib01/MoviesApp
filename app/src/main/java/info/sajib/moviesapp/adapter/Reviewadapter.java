@@ -17,8 +17,8 @@ import info.sajib.moviesapp.pojo.Review;
  * Created by sajib on 09-04-2016.
  */
 public class Reviewadapter extends RecyclerView.Adapter<Reviewadapter.Viewholder> {
-    Context context;
-    List<Review> reviews = Collections.emptyList();
+    private Context context;
+    private List<Review> reviews = Collections.emptyList();
 
     public Reviewadapter(Context context, List<Review> reviews) {
         this.reviews = reviews;

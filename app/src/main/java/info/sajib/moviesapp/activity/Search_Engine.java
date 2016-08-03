@@ -5,7 +5,6 @@ import android.annotation.TargetApi;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Rect;
 import android.os.Build;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
@@ -15,16 +14,13 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.KeyEvent;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,7 +38,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-import info.sajib.moviesapp.CustomRetryPolicy;
 import info.sajib.moviesapp.MyApplication;
 import info.sajib.moviesapp.R;
 import info.sajib.moviesapp.adapter.SearchAdapter;
@@ -56,7 +51,7 @@ import info.sajib.moviesapp.volleysingleton.VolleySingleton;
  * Created by sajib on 05-03-2016.
  */
 public class Search_Engine extends AppCompatActivity {
-    String query;
+    private String query;
     private boolean issearched = false;
     private EditText editText;
     private ImageButton clear;
@@ -71,33 +66,32 @@ public class Search_Engine extends AppCompatActivity {
     private ImageButton btnSpeak;
     private boolean animationstarted = true;
     private final int REQ_CODE_SPEECH_INPUT = 100;
-    public static final String TAG = Search_Engine.class
-            .getSimpleName();
-    private static final int REQUEST_TIMEOUT = 5 * 1000;
-    private static final int MAX_RETRIES = 3;
-    private static final int BACKOFF_MULTIPLIER = 1;
     private CardView card;
-    private LinearLayout linearLayout;
     private StringBuffer year;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_engine);
+
         requestQueue = VolleySingleton.getInstance().getRequestQueue();
         listitem = new ArrayList<>();
+
         editText = (EditText) findViewById(R.id.editsearch);
         card = (CardView) findViewById(R.id.card);
+
         mrecyclerView = (RecyclerView) findViewById(R.id.search_recyclerview);
         mLayoutmanager = new LinearLayoutManager(this);
         mrecyclerView.setLayoutManager(mLayoutmanager);
         mAdapter = new SearchAdapter(this, listitem);
         mrecyclerView.setAdapter(mAdapter);
+
         mrecyclerView.addOnItemTouchListener(new RecyclerViewTouchListner(this, mrecyclerView, new ClickListner() {
             @Override
             public void OnClick(View v, int Position) {
+
                 InputMethodManager imm = (InputMethodManager) Search_Engine.this.getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
+
                 Movie movie = listitem.get(Position);
                 long id = movie.getId();
                 String title = movie.getOriginalTitle();
@@ -227,7 +221,7 @@ public class Search_Engine extends AppCompatActivity {
                 @Override
                 public boolean onKey(View v, int keyCode, KeyEvent event) {
                     if (keyCode == KeyEvent.KEYCODE_DEL) {
-                        Toast.makeText(Search_Engine.this, "hello i am here", Toast.LENGTH_SHORT).show();
+
                     }
                     return false;
                 }

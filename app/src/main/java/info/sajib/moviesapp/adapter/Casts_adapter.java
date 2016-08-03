@@ -19,8 +19,8 @@ import info.sajib.moviesapp.R;
  */
 public class Casts_adapter extends RecyclerView.Adapter<Casts_adapter.Myviewholder> {
 
-    Context context;
-    List<Casts> cast= Collections.emptyList();
+    private Context context;
+    private List<Casts> cast= Collections.emptyList();
 
     public Casts_adapter(Context context, List<Casts> cast)
     {

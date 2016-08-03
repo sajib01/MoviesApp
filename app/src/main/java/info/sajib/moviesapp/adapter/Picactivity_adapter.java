@@ -21,9 +21,10 @@ import info.sajib.moviesapp.volleysingleton.VolleySingleton;
  * Created by sajib on 24-04-2016.
  */
 public class Picactivity_adapter extends RecyclerView.Adapter<Picactivity_adapter.Myviewholder> {
-    Context context;
-    List<Backdrop> item = Collections.emptyList();
-    ImageLoader imageLoader;
+    private Context context;
+    private List<Backdrop> item = Collections.emptyList();
+    private ImageLoader imageLoader;
+
     public Picactivity_adapter(Context context) {
         this.context = context;
         imageLoader= VolleySingleton.getInstance().getImageLoader();

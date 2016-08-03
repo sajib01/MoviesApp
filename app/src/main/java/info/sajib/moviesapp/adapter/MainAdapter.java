@@ -1,15 +1,10 @@
 package info.sajib.moviesapp.adapter;
 
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
 import android.content.Context;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.OvershootInterpolator;
-import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -28,14 +23,15 @@ import info.sajib.moviesapp.pojo.Movie;
  * Created by sajib on 06-03-2016.
  */
 public class MainAdapter extends RecyclerView.Adapter<MainAdapter.Myviewholder> {
-    LayoutInflater inflater;
-    Context context;
-    String url;
-    VolleySingleton volleySingleton;
-    ImageLoader imageLoader;
+
+    private LayoutInflater inflater;
+    private Context context;
+    private String url;
+    private VolleySingleton volleySingleton;
+    private ImageLoader imageLoader;
     private List<Movie> data = Collections.emptyList();
-    int item;
-    int startposition;
+    private int item;
+    private int startposition;
 
     public MainAdapter(Context context) {
         this.context = context;

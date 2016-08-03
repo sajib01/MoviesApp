@@ -2,7 +2,6 @@ package info.sajib.moviesapp.activity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -41,75 +40,63 @@ import info.sajib.moviesapp.pojo.Movie;
 import info.sajib.moviesapp.pojo.PersonDetails;
 import info.sajib.moviesapp.pojo.Upcoming;
 
-public class CastDetailsActivity extends AppCompatActivity {
+public class CastDetailsActivity extends AppCompatActivity{
     private RequestQueue requestqueue;
     private int id;
     private String mEndpoint;
     private List<PersonDetails> personDetailsList;
     private List<Movie> listitem = new ArrayList<>();
     private List<Upcoming> list = new ArrayList<>();
-    String mEnd;
-    String formattedDate;
-    JsonObjectRequest jsonobjectrequest;
+    private String mEnd;
+    private String formattedDate;
+    private JsonObjectRequest jsonobjectrequest;
     private RecyclerView mRecyclerview;
     private LinearLayoutManager linearLayoutManager;
     private Cast_details_adapter cast_details_adapter;
-    Toolbar toolbar;
-    Bitmap bitmap;
-    CollapsingToolbarLayout collapsingToolbarLayout;
-    int colr;
-    Cast_pager_adapter cast_pager_adapter;
-    Customviewpager viewPager;
-
-    ProgressDialog mProgress;
+    private Toolbar toolbar;
+    private CollapsingToolbarLayout collapsingToolbarLayout;
+    private int colr;
+    private Cast_pager_adapter cast_pager_adapter;
+    private Customviewpager viewPager;
+    private ProgressDialog mProgress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cast_details);
-        requestqueue = VolleySingleton.getInstance().getRequestQueue();
-        linearLayoutManager = new LinearLayoutManager(this);
-        mRecyclerview = (RecyclerView) findViewById(R.id.cast_details_recyclerview);
 
+        requestqueue = VolleySingleton.getInstance().getRequestQueue();
+
+        mRecyclerview = (RecyclerView) findViewById(R.id.cast_details_recyclerview);
+        linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mRecyclerview.setLayoutManager(linearLayoutManager);
+
         mProgress = new ProgressDialog(this);
         mProgress.setMessage(getString(R.string.LoadingProfile));
         mProgress.getWindow().setGravity(Gravity.CENTER);
         mProgress.show();
-        Calendar c = Calendar.getInstance();
-        System.out.println("Current time => " + c.getTime());
 
+        Calendar c = Calendar.getInstance();
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         formattedDate = df.format(c.getTime());
+
         id = getIntent().getIntExtra("personid", id);
         mEndpoint = Endpoint.PERSON + id + "?api_key=" + MyApplication.TMDB_API_KEY;
-        Log.d("idplease", mEndpoint);
         sendjsonrequest(mEndpoint);
-
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        colr = 0xffffff;
 
+        colr = 0xffffff;
 
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         collapsingToolbarLayout.setTitle(" ");
 
-
         viewPager = (Customviewpager) findViewById(R.id.cast_details_viewpager);
         cast_pager_adapter = new Cast_pager_adapter(this, listitem);
-        viewPager.setPagingEnabled(false);
-        if(listitem!=null) {
-            viewPager.startAutoScroll(5000);
-
-        }
-        viewPager.setInterval(5000);
-        viewPager.setStopScrollWhenTouch(true);
-        viewPager.setPageTransformer(false, new Zoompagetransformer(this));
-
 
     }
 
@@ -117,10 +104,8 @@ public class CastDetailsActivity extends AppCompatActivity {
         jsonobjectrequest = new JsonObjectRequest(Request.Method.GET, mEndpoint, (String) null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Log.d("rspns", String.valueOf(response));
                 personDetailsList = parsejson(response);
                 mEnd = Endpoint.DISCOVER + "?api_key=" + MyApplication.TMDB_API_KEY + "&with_people=" + id + "&sort_by=popularity.desc";
-
                 sendjsonrequest2(mEnd);
             }
         }, new Response.ErrorListener() {
@@ -230,19 +215,22 @@ public class CastDetailsActivity extends AppCompatActivity {
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, mEndp, (String) null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
+
                 if (mProgress.isShowing()) {
                     mProgress.dismiss();
                 }
+
                 parseJsonRequest3(response);
+
                 cast_details_adapter = new Cast_details_adapter(CastDetailsActivity.this, personDetailsList, listitem, list);
                 PersonDetails personDetails = personDetailsList.get(0);
                 collapsingToolbarLayout.setTitle(personDetails.getName());
 
                 viewPager.setAdapter(cast_pager_adapter);
                 cast_pager_adapter.notifyDataSetChanged();
-                Log.d("listitemsize", String.valueOf(listitem));
                 mRecyclerview.setAdapter(cast_details_adapter);
                 cast_details_adapter.notifyDataSetChanged();
+                done();
 
 
             }
@@ -281,8 +269,6 @@ public class CastDetailsActivity extends AppCompatActivity {
                     movie.setPosterPath(posterpath);
                     movie.setId(id);
                     list.add(movie);
-                    Log.d("pagerend", backdroppath);
-
 
                 }
             } catch (JSONException e) {
@@ -321,6 +307,17 @@ public class CastDetailsActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         // startActivity(new Intent(this,MainActivity.class));
+    }
+
+    public void done() {
+        viewPager.setPagingEnabled(false);
+        if(listitem!=null) {
+            viewPager.startAutoScroll(5000);
+
+        }
+        viewPager.setInterval(5000);
+        viewPager.setStopScrollWhenTouch(true);
+        viewPager.setPageTransformer(false, new Zoompagetransformer(this));
     }
 
 

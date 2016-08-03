@@ -47,8 +47,7 @@
             android:layout_marginTop="4dp"
             android:layout_toRightOf="@+id/frame"
             android:maxLines="5"
-            android:text="Hello"
-            android:textColor="@android:color/black"
+            android:textColor="#113a66"
             android:textSize="14sp" />
 
         <TextView
@@ -60,8 +59,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_toRightOf="@+id/frame"
-            android:text="4.5"
-            android:textColor="@color/primaryText"
+            android:textColor="#113a66"
             android:textSize="14sp" />
         <TextView
             android:id="@+id/year"
@@ -91,7 +89,6 @@
         android:layout_width="45dp"
         android:layout_marginRight="10dp"
         android:layout_height="45dp"
-        android:src="@drawable/reyon"
         card_view:civ_border_width="0.3dp"
         card_view:civ_border_color="#3366fc"
         android:layout_gravity="end|center_vertical"

@@ -36,10 +36,10 @@ import me.relex.circleindicator.CircleIndicator;
 
 public class Main_screen_Adapter extends RecyclerView.Adapter<Main_screen_Adapter.MainViewHolder> {
 
-    List<Tv> tvitem= Collections.emptyList();
-    List<Movie> listitem= Collections.emptyList();
-    List<Upcoming> upitem= Collections.emptyList();
-    Context context;
+    private List<Tv> tvitem= Collections.emptyList();
+    private List<Movie> listitem= Collections.emptyList();
+    private List<Upcoming> upitem= Collections.emptyList();
+    private Context context;
     private static final int TYPE1=0;
     private static final int TYPE2=1;
     private static final int TYPE3=2;

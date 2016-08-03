@@ -26,9 +26,9 @@ import info.sajib.moviesapp.volleysingleton.VolleySingleton;
  */
 public class Tv_description_similartvadapter extends RecyclerView.Adapter<Tv_description_similartvadapter.Viewholder> {
 
-    List<Tvsimilar> tvdata= Collections.emptyList();
-    Context context;
-    ImageLoader imageLoader;
+    private List<Tvsimilar> tvdata= Collections.emptyList();
+    private Context context;
+    private ImageLoader imageLoader;
 
     public void setdata(List<Tvsimilar> tvdata)
     {

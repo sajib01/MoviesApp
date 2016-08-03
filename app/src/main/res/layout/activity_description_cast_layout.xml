@@ -11,7 +11,6 @@
         android:layout_height="72dp"
         app:civ_border_color="@android:color/black"
         app:civ_border_width="1dp"
-        android:src="@drawable/reyon"
 
         />
     <TextView
@@ -38,12 +37,12 @@
     <TextView
         android:id="@+id/activity_description_cast_layout_charatername"
         android:layout_width="wrap_content"
-        android:text="Dilwale"
         android:layout_toRightOf="@+id/activity_description_cast_layout_actorimage"
         android:layout_marginLeft="35dp"
         android:layout_marginTop="10dp"
         android:layout_below="@+id/activity_description_cast_layout_actorname"
         android:textSize="18sp"
+        android:textColor="#113a66"
         android:layout_height="wrap_content" />
 
 </RelativeLayout>

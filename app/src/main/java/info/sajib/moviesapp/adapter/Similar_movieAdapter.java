@@ -24,9 +24,9 @@ import info.sajib.moviesapp.volleysingleton.VolleySingleton;
  * Created by sajib on 13-03-2016.
  */
 public class Similar_movieAdapter extends RecyclerView.Adapter<Similar_movieAdapter.Myviewholder> {
-    Context context;
-    List<Movie> listitem = Collections.emptyList();
-    ImageLoader imageLoader;
+    private Context context;
+    private List<Movie> listitem = Collections.emptyList();
+    private ImageLoader imageLoader;
 
     public Similar_movieAdapter(Context context) {
         this.context = context;

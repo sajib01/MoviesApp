@@ -48,21 +48,21 @@ public class Tvon_The_Air extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    RecyclerView mRecycler;
-    List<Tv> tvdata=new ArrayList<>();
-    int resource;
-    int imageresource;
-    Tvcommon_adapter tvcommonAdapter;
-    RequestQueue request;
-    int startingposition=0;
-    int page=1;
-    String mEndpoint;
-    ProgressDialog mProgressdialog;
+    private RecyclerView mRecycler;
+    private List<Tv> tvdata=new ArrayList<>();
+    private int resource;
+    private int imageresource;
+    private Tvcommon_adapter tvcommonAdapter;
+    private RequestQueue request;
+    private int startingposition=0;
+    private int page=1;
+    private String mEndpoint;
+    private ProgressDialog mProgressdialog;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    boolean loading=false;
-    ProgressBar progressBar;
+    private boolean loading=false;
+    private ProgressBar progressBar;
     public Tvon_The_Air() {
         // Required empty public constructor
     }
@@ -101,15 +101,19 @@ public class Tvon_The_Air extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v=inflater.inflate(R.layout.fragment_tvon__the__air, container, false);
+
         mRecycler= (RecyclerView) v.findViewById(R.id.tvon_the_air_recycler);
         resource=R.layout.fragment_tvon_the_air_layout;
         imageresource=R.id.tvon_the_air_layout_poster;
+
         mProgressdialog=new ProgressDialog(getActivity());
         progressBar= (ProgressBar) v.findViewById(R.id.progressBar);
+
         LinearLayoutManager gridLayoutManager=new GridLayoutManager(getActivity(),2);
         mRecycler.setLayoutManager(gridLayoutManager);
         tvcommonAdapter=new Tvcommon_adapter(getActivity(),resource,imageresource);
         mRecycler.setAdapter(tvcommonAdapter);
+
         mRecycler.addOnScrollListener(new FilterRecyclerViewScrollListener(gridLayoutManager) {
             @Override
             public void onLoadMore(int page, int totalItemsCount) {

@@ -23,9 +23,10 @@ import info.sajib.moviesapp.volleysingleton.VolleySingleton;
  * Created by sajib on 14-04-2016.
  */
 public class Tv_description_seasons extends RecyclerView.Adapter<Tv_description_seasons.Myviewholder> {
-    List<Tv> tvdata= Collections.emptyList();
-    Context context;
-    ImageLoader imageLoader;
+    private List<Tv> tvdata= Collections.emptyList();
+    private Context context;
+    private ImageLoader imageLoader;
+
     public Tv_description_seasons(Context context, List<Tv> tvdata) {
         this.context=context;
         this.tvdata=tvdata;

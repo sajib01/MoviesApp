@@ -1,7 +1,6 @@
 package info.sajib.moviesapp.adapter;
 
 import android.content.Context;
-import android.media.Rating;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,14 +23,14 @@ import info.sajib.moviesapp.volleysingleton.VolleySingleton;
  * Created by sajib on 11-04-2016.
  */
 public class Mainadapter2 extends RecyclerView.Adapter<Mainadapter2.Myviewholder> {
-    LayoutInflater inflater;
-    Context context;
-    String url;
-    VolleySingleton volleySingleton;
-    ImageLoader imageLoader;
+    private LayoutInflater inflater;
+    private Context context;
+    private String url;
+    private VolleySingleton volleySingleton;
+    private ImageLoader imageLoader;
     private List<Movie> data = Collections.emptyList();
-    int item;
-    int startposition;
+    private int item;
+    private int startposition;
 
     public Mainadapter2(Context context) {
         this.context = context;

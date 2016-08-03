@@ -54,6 +54,7 @@ public class Nowplaying extends AppCompatActivity {
         recyclerView = (RecyclerView)findViewById(R.id.movie_recyclerview);
         mCurrentPage = 1;
         mTotalPageSize = 1;
+
         requestQueue = VolleySingleton.getInstance().getRequestQueue();
         sendJsonRequest(mCurrentPage);
 
@@ -178,13 +179,8 @@ public class Nowplaying extends AppCompatActivity {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-
-
         }
-
         return listitem;
     }
-
-
 
     }

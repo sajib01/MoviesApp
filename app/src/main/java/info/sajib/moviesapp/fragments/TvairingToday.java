@@ -44,21 +44,21 @@ public class TvairingToday extends Fragment {
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    RecyclerView mRecycler;
-    List<Tv> tvdata=new ArrayList<>();
-    int resource;
-    int imageresource;
-    Tvcommon_adapter tvcommonAdapter;
-    RequestQueue request;
-    int startingposition=0;
-    int page=1;
-    String mEndpoint;
-    ProgressDialog mProgressdialog;
-    boolean mloading=false;
+    private RecyclerView mRecycler;
+    private List<Tv> tvdata=new ArrayList<>();
+    private int resource;
+    private int imageresource;
+    private Tvcommon_adapter tvcommonAdapter;
+    private RequestQueue request;
+    private int startingposition=0;
+    private int page=1;
+    private String mEndpoint;
+    private ProgressDialog mProgressdialog;
+    private boolean mloading=false;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    ProgressBar progressBar;
+    private ProgressBar progressBar;
 
     public TvairingToday() {
         // Required empty public constructor
@@ -91,16 +91,19 @@ public class TvairingToday extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v=inflater.inflate(R.layout.fragment_tvairing_today, container, false);
+
         mRecycler= (RecyclerView) v.findViewById(R.id.tvairing_today);
         resource=R.layout.fragment_tvairing_today_layout;
         imageresource=R.id.tvairing_today_layout_poster;
 
         progressBar= (ProgressBar) v.findViewById(R.id.progressBar);
         mProgressdialog=new ProgressDialog(getActivity());
+
         LinearLayoutManager gridLayoutManager=new GridLayoutManager(getActivity(),2);
         mRecycler.setLayoutManager(gridLayoutManager);
         tvcommonAdapter=new Tvcommon_adapter(getActivity(),resource,imageresource);
-        mRecycler.setAdapter(tvcommonAdapter);
+        mRecycler.setAdapter(tvcommonAdapter)
+        ;
         mRecycler.addOnScrollListener(new FilterRecyclerViewScrollListener(gridLayoutManager) {
             @Override
             public void onLoadMore(int page, int totalItemsCount) {
@@ -181,7 +184,7 @@ public class TvairingToday extends Fragment {
                         tv.setPosterPath(poster);
                         tv.setId(id);
                         tvdata.add(tv);
-                        Log.d("sajibtv", String.valueOf(tvdata.size()));
+
 
                 }
             } catch (JSONException e) {

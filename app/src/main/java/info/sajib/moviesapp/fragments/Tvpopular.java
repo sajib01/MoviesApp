@@ -48,21 +48,21 @@ public class Tvpopular extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    RecyclerView mRecycler;
-    List<Tv> tvdata=new ArrayList<>();
-    int resource;
-    int imageresource;
-    Tvcommon_adapter tvcommonAdapter;
-    RequestQueue request;
-    int startingposition=0;
-    int page=1;
-    String mEndpoint;
-    ProgressDialog mProgressdialog;
-    boolean loading=false;
+    private RecyclerView mRecycler;
+    private List<Tv> tvdata=new ArrayList<>();
+    private int resource;
+    private int imageresource;
+    private Tvcommon_adapter tvcommonAdapter;
+    private RequestQueue request;
+    private int startingposition=0;
+    private int page=1;
+    private String mEndpoint;
+    private ProgressDialog mProgressdialog;
+    private boolean loading=false;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    ProgressBar progressBar;
+    private ProgressBar progressBar;
 
     public Tvpopular() {
         // Required empty public constructor
@@ -102,15 +102,18 @@ public class Tvpopular extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v=inflater.inflate(R.layout.fragment_tvpopular, container, false);
+
         mRecycler= (RecyclerView) v.findViewById(R.id.tvpopular);
         resource=R.layout.fragment_tvpopular_layout;
         imageresource=R.id.tvpopular_layout_poster;
+
         mProgressdialog=new ProgressDialog(getActivity());
         progressBar= (ProgressBar) v.findViewById(R.id.progressBar);
         LinearLayoutManager gridLayoutManager=new GridLayoutManager(getActivity(),2);
         mRecycler.setLayoutManager(gridLayoutManager);
         tvcommonAdapter=new Tvcommon_adapter(getActivity(),resource,imageresource);
         mRecycler.setAdapter(tvcommonAdapter);
+
         mRecycler.addOnScrollListener(new FilterRecyclerViewScrollListener(gridLayoutManager) {
             @Override
             public void onLoadMore(int page, int totalItemsCount) {

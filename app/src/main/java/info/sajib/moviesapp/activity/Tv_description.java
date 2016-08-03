@@ -35,38 +35,38 @@ import info.sajib.moviesapp.volleysingleton.VolleySingleton;
  * Created by sajib on 12-04-2016.
  */
 public class Tv_description extends AppCompatActivity {
-    RecyclerView recyclerView;
-    RequestQueue requestQueue;
-    List<String> genre = new ArrayList<>();
-    List<Tv> tvdata = new ArrayList<>();
-    List<Tvcast> tvcastdata = new ArrayList<>();
-    List<String> backdrops = new ArrayList<>();
-    List<String> creaditedby = new ArrayList<>();
-    List<Tvsimilar> tvsimilars = new ArrayList<>();
-    List<String> generalinformation = new ArrayList<>();
-    ProgressDialog progressDialog;
-    Tv_description_adapter descriptionAdapter;
-    long id;
+    private RecyclerView recyclerView;
+    private RequestQueue requestQueue;
+    private List<String> genre = new ArrayList<>();
+    private List<Tv> tvdata = new ArrayList<>();
+    private List<Tvcast> tvcastdata = new ArrayList<>();
+    private List<String> backdrops = new ArrayList<>();
+    private List<String> creaditedby = new ArrayList<>();
+    private List<Tvsimilar> tvsimilars = new ArrayList<>();
+    private List<String> generalinformation = new ArrayList<>();
+    private ProgressDialog progressDialog;
+    private Tv_description_adapter descriptionAdapter;
+    private long id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tv_description);
+
         requestQueue = VolleySingleton.getInstance().getRequestQueue();
         id = getIntent().getLongExtra("tvid", 0);
 
         recyclerView = (RecyclerView) findViewById(R.id.tv_description_recyclerview);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-
-        senjsonrequest();
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage(getString(R.string.loading_data));
-        progressDialog.show();
-
         recyclerView.setLayoutManager(linearLayoutManager);
         descriptionAdapter = new Tv_description_adapter(Tv_description.this);
 
+        senjsonrequest();
+
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage(getString(R.string.loading_data));
+        progressDialog.show();
 
     }
 
@@ -116,7 +116,6 @@ public class Tv_description extends AppCompatActivity {
                     tvdata.add(tv);
 
                 }
-                Log.d("tvsize", String.valueOf(tvdata.size()));
 
                 JSONArray genrearray = response.getJSONArray("genres");
                 for (int i = 0; i < genrearray.length(); i++) {

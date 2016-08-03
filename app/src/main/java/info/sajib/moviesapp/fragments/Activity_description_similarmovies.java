@@ -10,7 +10,6 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -36,27 +35,18 @@ import info.sajib.moviesapp.recyclertouchlistner.RecyclerViewTouchListner;
 import info.sajib.moviesapp.volleysingleton.VolleySingleton;
 
 public class Activity_description_similarmovies extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     private RecyclerView recyclerView;
     private List<Movie> listitem=new ArrayList<>();
     private LinearLayoutManager linearLayoutManager;
     private String mEndpoint;
-    Similar_movieAdapter similar_movieAdapter;
-    RequestQueue requestQueue;
-    long id;
-    ProgressDialog progressDialog;
-    TextView textView;
-    TextView similarmovies;
-    private int mCurrentPage, mTotalPageSize;
+    private Similar_movieAdapter similar_movieAdapter;
+    private RequestQueue requestQueue;
+    private long id;
+    private ProgressDialog progressDialog;
+    private int mCurrentPage;
     private boolean mLoading = false;
+
     public Activity_description_similarmovies() {
         // Required empty public constructor
     }
@@ -83,16 +73,19 @@ public class Activity_description_similarmovies extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v=inflater.inflate(R.layout.activity_description_similarmovies, container, false);
+
         recyclerView= (RecyclerView) v.findViewById(R.id.activity_description_similarmovies_recyclerview);
         final LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getActivity());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         similar_movieAdapter=new Similar_movieAdapter(getActivity());
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(similar_movieAdapter);
+
         progressDialog=new ProgressDialog(getActivity());
         progressDialog.setMessage(getString(R.string.loading_data));
         progressDialog.getWindow().setGravity(Gravity.BOTTOM);
         progressDialog.show();
+
         recyclerView.addOnScrollListener(new FilterRecyclerViewScrollListener(linearLayoutManager) {
 
             @Override
@@ -181,7 +174,6 @@ public class Activity_description_similarmovies extends Fragment {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-
 
         }
 

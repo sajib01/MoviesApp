@@ -2,20 +2,22 @@ package info.sajib.moviesapp.fragments;
 
 
 import android.app.ProgressDialog;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.squareup.picasso.Picasso;
 
@@ -38,20 +40,23 @@ import info.sajib.moviesapp.volleysingleton.VolleySingleton;
  */
 public class Activity_description_details extends Fragment {
 
-    long id;
-    RequestQueue requestQueue;
-    List<Movie> listitem = new ArrayList<>();
+    private long id;
+    private RequestQueue requestQueue;
+    private List<Movie> listitem = new ArrayList<>();
     private List<Genreitem> genreitem = new ArrayList<>();
     private List<String> crewmember = new ArrayList<>();
-    ProgressDialog progressDialog;
-    ImageView poster;
-    TextView title;
-    TextView date;
-    TextView rating;
-    TextView budget;
-    TextView director;
-    TextView overview;
-    TextView genre;
+    private ProgressDialog progressDialog;
+    private ImageView poster;
+    private TextView title;
+    private TextView date;
+    private TextView rating;
+    private TextView budget;
+    private TextView director;
+    private TextView overview;
+    private TextView genre;
+    private Bitmap bbitmap;
+    private ImageLoader imageLoader;
+    private RelativeLayout relativeLayout;
     public static Activity_description_details newInstance(long Id) {
         Activity_description_details myFragment = new Activity_description_details();
 
@@ -72,10 +77,13 @@ public class Activity_description_details extends Fragment {
         id = getArguments().getLong("ID", 0);
         requestQueue = VolleySingleton.getInstance().getRequestQueue();
         String Id = String.valueOf(id);
+
         progressDialog=new ProgressDialog(getActivity());
         progressDialog.setMessage(getString(R.string.loading_data));
         progressDialog.getWindow().setGravity(Gravity.BOTTOM);
         progressDialog.show();
+
+        imageLoader=VolleySingleton.getInstance().getImageLoader();
         String url = Endpoint.MOVIE + Id + "?api_key=" + MyApplication.TMDB_API_KEY+ "&append_to_response=casts,images,trailers&language=en&include_image_language=en,null";
 
         SendJsonRequest(url);
@@ -105,6 +113,7 @@ public class Activity_description_details extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View details = inflater.inflate(R.layout.activity_description_details, container, false);
+
         title= (TextView) details.findViewById(R.id.Movie_title);
         date= (TextView) details.findViewById(R.id.Movie_date);
         rating= (TextView) details.findViewById(R.id.Movie_vote);
@@ -113,6 +122,8 @@ public class Activity_description_details extends Fragment {
         director= (TextView) details.findViewById(R.id.Movie_Director);
         overview= (TextView) details.findViewById(R.id.Movie_description);
         poster= (ImageView) details.findViewById(R.id.Movie_poster);
+        relativeLayout= (RelativeLayout) details.findViewById(R.id.Movie_details);
+
         return details;
     }
 

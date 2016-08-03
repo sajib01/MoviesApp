@@ -23,7 +23,6 @@
             android:layout_width="110dp"
             android:layout_height="140dp"
             android:scaleType="fitXY"
-            android:src="@drawable/reyon"
             android:transitionName="castimage"
             />
     </android.support.v7.widget.CardView>
@@ -56,13 +55,7 @@
         android:layout_below="@+id/overview"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:text="Ryan Rodney Reynolds (born October 23, 1976) is a Canadian actor.
-
-He is known for his roles in National Lampoon's Van Wilder, Waiting..., Just Friends, Definitely, Maybe, The Proposal and Buried, as well as Wade Wilson/Deadpool in X-Men Origins: Wolverine. His television roles include Michael Bergen on Two Guys and a Girl. Reynolds also stars in the upcoming DC superhero film Green Lantern alongside Blake Lively and Mark Strong.
-
-Description above from the Wikipedia article Ryan Reynolds, licensed under CC-BY-SA, full list of contributors on Wikipedia."
-
-        android:textColor="#686767"
+        android:textColor="#113a66"
         android:textSize="12sp" />
 
     <TextView
@@ -97,8 +90,7 @@ Description above from the Wikipedia article Ryan Reynolds, licensed under CC-BY
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_toRightOf="@+id/cast_details_imageview1"
-        android:text="2015/06/15"
-        android:textColor="#686767" />
+        android:textColor="#113a66" />
 
     <TextView
         android:id="@+id/cast_details_Place_Of_Birth"
@@ -120,6 +112,5 @@ Description above from the Wikipedia article Ryan Reynolds, licensed under CC-BY
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_toRightOf="@+id/cast_details_imageview1"
-        android:text="Vancouver, British Columbia, Canada"
         android:textColor="#686767" />
 </RelativeLayout>

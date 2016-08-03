@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fillViewport="false"
     xmlns:android="http://schemas.android.com/apk/res/android">
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/Movie_details"
     android:layout_width="match_parent"
     android:layout_marginTop="10dp"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/Movie_title"
@@ -16,18 +18,26 @@
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
         android:text=""
-        android:textColor="#686767"
+        android:textColor="#4495f7"
         android:textSize="22sp"
         android:textStyle="bold" />
-    <ImageView
-        android:id="@+id/Movie_poster"
+    <android.support.v7.widget.CardView
+        android:id="@+id/movieposter"
         android:layout_width="100dp"
-        android:layout_marginLeft="8dp"
-        android:layout_below="@+id/Movie_title"
-        android:layout_marginBottom="4dp"
         android:layout_height="130dp"
-        android:elevation="8dp"
-        />
+        android:layout_marginLeft="8dp"
+        app:cardElevation="5dp"
+        app:cardUseCompatPadding="true"
+        android:layout_below="@+id/Movie_title"
+        >
+        <ImageView
+            android:id="@+id/Movie_poster"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            />
+    </android.support.v7.widget.CardView>
+
 
     <TextView
         android:id="@+id/two"
@@ -36,9 +46,10 @@
         android:layout_below="@+id/Movie_title"
         android:layout_marginBottom="16dp"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
         android:gravity="center_vertical"
         android:text="GENRE:"
-        android:layout_toRightOf="@+id/Movie_poster"
+        android:layout_toRightOf="@+id/movieposter"
         android:textColor="@android:color/black"
         android:textSize="14sp"
         android:textStyle="bold" />
@@ -48,12 +59,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
+        android:layout_marginTop="8dp"
         android:layout_below="@+id/Movie_title"
         android:layout_marginBottom="16dp"
         android:layout_toRightOf="@+id/two"
         android:gravity="center_vertical"
         android:text=""
-        android:textColor="#686767"
+        android:textColor="#113a66"
         android:textSize="14sp" />
 
 
@@ -66,7 +78,7 @@
         android:layout_marginLeft="8dp"
         android:gravity="center_vertical"
         android:text="DATE:"
-        android:layout_toRightOf="@+id/Movie_poster"
+        android:layout_toRightOf="@+id/movieposter"
         android:textColor="@android:color/black"
         android:textSize="14sp"
         android:textStyle="bold" />
@@ -81,7 +93,7 @@
         android:layout_toRightOf="@+id/three"
         android:gravity="center_vertical"
         android:text=""
-        android:textColor="#686767"
+        android:textColor="#113a66"
         android:textSize="14sp" />
 
 
@@ -94,7 +106,7 @@
         android:layout_marginLeft="8dp"
         android:gravity="center_vertical"
         android:text="RATING:"
-        android:layout_toRightOf="@+id/Movie_poster"
+        android:layout_toRightOf="@+id/movieposter"
         android:textColor="@android:color/black"
         android:textSize="14sp"
         android:textStyle="bold" />
@@ -109,7 +121,7 @@
         android:layout_toRightOf="@+id/four"
         android:gravity="center_vertical"
         android:text=""
-        android:textColor="#686767"
+        android:textColor="#113a66"
         android:textSize="14sp" />
 
     <TextView
@@ -121,7 +133,7 @@
         android:layout_marginLeft="8dp"
         android:gravity="center_vertical"
         android:text="BUDGET:"
-        android:layout_toRightOf="@+id/Movie_poster"
+        android:layout_toRightOf="@+id/movieposter"
         android:textColor="@android:color/black"
         android:textSize="14sp"
         android:textStyle="bold" />
@@ -136,7 +148,7 @@
         android:layout_toRightOf="@+id/four"
         android:gravity="center_vertical"
         android:text=""
-        android:textColor="#686767"
+        android:textColor="#113a66"
         android:textSize="14sp" />
 
     <TextView
@@ -148,7 +160,7 @@
         android:layout_marginLeft="8dp"
         android:gravity="center_vertical"
         android:text="DIRECTOR:"
-        android:layout_toRightOf="@+id/Movie_poster"
+        android:layout_toRightOf="@+id/movieposter"
         android:textColor="@android:color/black"
         android:textSize="14sp"
         android:textStyle="bold" />
@@ -164,14 +176,14 @@
         android:layout_toRightOf="@+id/six"
         android:gravity="center_vertical"
         android:text=""
-        android:textColor="#686767"
+        android:textColor="#113a66"
         android:textSize="16sp" />
 
     <TextView
         android:id="@+id/five"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/Movie_poster"
+        android:layout_below="@id/movieposter"
         android:layout_margin="8dp"
         android:gravity="center_vertical"
         android:text="OVERVIEW"
@@ -188,7 +200,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:text=""
-        android:textColor="#686767"
+        android:textColor="#113a66"
 
         android:textSize="14sp" />
 

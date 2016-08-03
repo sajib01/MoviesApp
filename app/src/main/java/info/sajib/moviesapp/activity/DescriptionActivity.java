@@ -47,24 +47,27 @@ public class DescriptionActivity extends AppCompatActivity {
     private List<Movie> data = new ArrayList<>();
     private String mEndpoint;
     private String Id;
-    ViewPager viewPager;
-    ViewPager viewpager1;
-    SlidingTabLayout designSlidingTabLayout;
-    long id;
-    Descriptionactivity_Pageradapter Dpageradapter;
+    private ViewPager viewPager;
+    private ViewPager viewpager1;
+    private SlidingTabLayout designSlidingTabLayout;
+    private long id;
+    private Descriptionactivity_Pageradapter Dpageradapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_description);
+
         requestQueue = VolleySingleton.getInstance().getRequestQueue();
 
         viewPager = (ViewPager) findViewById(R.id.activity_description_viewpager1);
         Dpageradapter =new Descriptionactivity_Pageradapter(DescriptionActivity.this,data);
         viewPager.setAdapter(Dpageradapter);
         viewPager.setPageTransformer(false,new DepthPageTransformer());
+
         viewpager1 = (ViewPager) findViewById(R.id.activity_description_viewpager2);
 
         designSlidingTabLayout = (SlidingTabLayout) findViewById(R.id.activity_description_slidingtab);
+
         viewpager1.setAdapter(new Myadapter(getSupportFragmentManager()));
         designSlidingTabLayout.setDistributeEvenly(true);
         designSlidingTabLayout.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
@@ -79,7 +82,6 @@ public class DescriptionActivity extends AppCompatActivity {
         id = getIntent().getLongExtra("movieid", 0);
 
         Id = String.valueOf(id);
-        Log.d("recce", String.valueOf(id));
 
         mEndpoint = Endpoint.MOVIE + Id + "?api_key=" + MyApplication.TMDB_API_KEY + "&append_to_response=casts,images,trailers&language=en&include_image_language=en,null";
         SendRequestjson(mEndpoint);

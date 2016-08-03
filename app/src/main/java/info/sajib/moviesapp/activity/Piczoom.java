@@ -45,12 +45,15 @@ public class Piczoom extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.piczoom);
+
         imageLoader = VolleySingleton.getInstance().getImageLoader();
         poster = getIntent().getStringExtra("poster");
         String url = Endpoint.IMAGE + "/w1280/" + poster;
+
         imageView = (ImageViewTouch) findViewById(R.id.piczoom_image);
         final Button buttonSetWallpaper = (Button)findViewById(R.id.wallapaper);
         progressBar= (ProgressBar) findViewById(R.id.loading);
+
         imageLoader.get(url, new ImageLoader.ImageListener() {
             @Override
             public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {
@@ -67,8 +70,6 @@ public class Piczoom extends AppCompatActivity {
 
             }
         });
-
-
 
         buttonSetWallpaper.setOnClickListener(new Button.OnClickListener(){
             @Override

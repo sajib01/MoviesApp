@@ -25,9 +25,9 @@ import info.sajib.moviesapp.volleysingleton.VolleySingleton;
  * Created by sajib on 08-03-2016.
  */
 public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.Myviewholder> {
-    Context context;
-    VolleySingleton volleySingleton;
-    ImageLoader imageLoader;
+    private Context context;
+    private VolleySingleton volleySingleton;
+    private ImageLoader imageLoader;
     private String Url;
     private List<Movie> data = Collections.emptyList();
 

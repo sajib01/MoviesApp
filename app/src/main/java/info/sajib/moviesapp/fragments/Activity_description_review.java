@@ -36,12 +36,13 @@ import info.sajib.moviesapp.volleysingleton.VolleySingleton;
  */
 public class Activity_description_review extends Fragment {
 
-    long id;
-    RecyclerView recyclerView;
-    List<Review> reviews=new ArrayList<>();
-    Reviewadapter adapter;
-    RequestQueue requestQueue;
-    ProgressDialog progressDialog;
+    private long id;
+    private RecyclerView recyclerView;
+    private List<Review> reviews=new ArrayList<>();
+    private Reviewadapter adapter;
+    private RequestQueue requestQueue;
+    private ProgressDialog progressDialog;
+
     public static Activity_description_review newInstance(long Id) {
         Activity_description_review myFragment = new Activity_description_review();
 
@@ -59,12 +60,15 @@ public class Activity_description_review extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         requestQueue= VolleySingleton.getInstance().getRequestQueue();
         id = getArguments().getLong("ID", 0);
+
         progressDialog=new ProgressDialog(getActivity());
         progressDialog.setMessage(getString(R.string.loading_data));
         progressDialog.getWindow().setGravity(Gravity.BOTTOM);
         progressDialog.show();
+
         String mEndpoint=Endpoint.MOVIE+id+"/reviews?api_key="+ MyApplication.TMDB_API_KEY;
         SendRequestjson(mEndpoint);
     }
@@ -73,12 +77,14 @@ public class Activity_description_review extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.activity_description_review, container, false);
+
         recyclerView = (RecyclerView) v.findViewById(R.id.activity_description_review_recycler);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         adapter = new Reviewadapter(getActivity(), reviews);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
+
         return v;
     }
 

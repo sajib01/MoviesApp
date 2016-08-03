@@ -41,12 +41,12 @@ import info.sajib.moviesapp.volleysingleton.VolleySingleton;
  * A simple {@link Fragment} subclass.
  */
 public class Activity_description_cast extends Fragment {
-    long id;
-    List<Casts> castsList=new ArrayList<>();
-    RecyclerView recyclerView;
-    RequestQueue requestQueue;
-    MovieCastAdapter adapter;
-    ProgressDialog progressDialog;
+    private long id;
+    private List<Casts> castsList=new ArrayList<>();
+    private RecyclerView recyclerView;
+    private RequestQueue requestQueue;
+    private MovieCastAdapter adapter;
+    private ProgressDialog progressDialog;
     public static Activity_description_cast newInstance(long Id) {
         Activity_description_cast myFragment = new Activity_description_cast();
         Bundle args = new Bundle();
@@ -73,16 +73,19 @@ public class Activity_description_cast extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View cast = inflater.inflate(R.layout.activity_description_cast, container, false);
+
         recyclerView= (RecyclerView) cast.findViewById(R.id.activity_description_cast_recycler);
         LinearLayoutManager layoutManager=new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         adapter=new MovieCastAdapter(getActivity(),castsList);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
+
         progressDialog=new ProgressDialog(getActivity());
         progressDialog.setMessage(getString(R.string.loading_data));
         progressDialog.getWindow().setGravity(Gravity.BOTTOM);
         progressDialog.show();
+
         recyclerView.addOnItemTouchListener(new RecyclerViewTouchListner(getActivity(), recyclerView, new ClickListner() {
             @Override
             public void OnClick(View v, int Position) {
@@ -103,6 +106,7 @@ public class Activity_description_cast extends Fragment {
 
             }
         }));
+
         recyclerView.addItemDecoration(
                 new HorizontalDividerItemDecoration.Builder(getActivity())
                         .drawable(R.drawable.line)
@@ -153,7 +157,6 @@ public class Activity_description_cast extends Fragment {
                     casts1.setCast(name);
                     casts1.setId(id);
                     castsList.add(casts1);
-                    Log.d("charac", name + charactername + profilepath);
 
                 }
 

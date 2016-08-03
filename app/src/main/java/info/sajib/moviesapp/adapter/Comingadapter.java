@@ -20,8 +20,8 @@ import info.sajib.moviesapp.R;
  * Created by sajib on 13-03-2016.
  */
 public class Comingadapter extends RecyclerView.Adapter<Comingadapter.MyviewHolder> {
-    Context context;
-    List<Upcoming> list= Collections.emptyList();
+    private Context context;
+    private List<Upcoming> list= Collections.emptyList();
     public Comingadapter(Context context, List<Upcoming> list) {
         this.context=context;
         this.list=list;

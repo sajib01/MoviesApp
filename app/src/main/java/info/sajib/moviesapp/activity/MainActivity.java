@@ -44,28 +44,26 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mActionBarDrawerToggle;
     private NavigationView mNavigationview;
-    static RequestQueue requestQueue;
-    static List<Movie> listitem = new ArrayList<>();
-    static List<Tv> tvitem = new ArrayList<>();
-    static List<Upcoming> upitem = new ArrayList<>();
-    static Main_screen_Adapter main_screen_adapter;
-    static RecyclerView recyclerView;
-    static ProgressBar progressBar;
-    public static boolean HASCONNECTION;
+    private RequestQueue requestQueue;
+    private List<Movie> listitem = new ArrayList<>();
+    private List<Tv> tvitem = new ArrayList<>();
+    private List<Upcoming> upitem = new ArrayList<>();
+    private Main_screen_Adapter main_screen_adapter;
+    private RecyclerView recyclerView;
+    private ProgressBar progressBar;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mToolbar = (Toolbar) findViewById(R.id.tool_bar);
 
+        mToolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         requestQueue = VolleySingleton.getInstance().getRequestQueue();
-
-        ConnectionAvailable();
+        sendJsonRequest();
 
         recyclerView = (RecyclerView) findViewById(R.id.main_reccycler);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
@@ -79,8 +77,6 @@ public class MainActivity extends AppCompatActivity {
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mNavigationview = (NavigationView) findViewById(R.id.nav_view);
-
-
 
         setupnav();
 
@@ -139,15 +135,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public static void ConnectionAvailable() {
-        if(!HASCONNECTION) {
 
-            sendJsonRequest();
-        }
-    }
-
-
-    private static void sendJsonRequest() {
+    private void sendJsonRequest() {
         String url = Endpoint.MOVIE + "now_playing" + "?api_key=" + MyApplication.TMDB_API_KEY + "&language=en";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, (String) null, new Response.Listener<JSONObject>() {
             @Override
@@ -155,8 +144,6 @@ public class MainActivity extends AppCompatActivity {
                 progressBar.setVisibility(View.GONE);
                 sendJsonRequest2();
                 if (response != null || response.length() > 0) {
-
-
                     try {
 
                         JSONArray jsonArray = response.getJSONArray("results");
@@ -194,7 +181,7 @@ public class MainActivity extends AppCompatActivity {
         requestQueue.getCache().clear();
     }
 
-    private static void sendJsonRequest2() {
+    private void sendJsonRequest2() {
 
         String url1 = Endpoint.TV + "on_the_air" + "?api_key=" + MyApplication.TMDB_API_KEY;
         JsonObjectRequest request1 = new JsonObjectRequest(Request.Method.GET, url1, (String) null, new Response.Listener<JSONObject>() {
@@ -238,7 +225,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private static void sendJsonRequest3() {
+    private void sendJsonRequest3() {
         String url2 = Endpoint.MOVIE + "upcoming" + "?api_key=" + MyApplication.TMDB_API_KEY + "&language=en";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url2, (String) null, new Response.Listener<JSONObject>() {
             @Override
@@ -265,7 +252,6 @@ public class MainActivity extends AppCompatActivity {
                             }
 
                         }
-                        HASCONNECTION=true;
                         main_screen_adapter.setdata(tvitem, listitem, upitem);
                         progressBar.setVisibility(View.GONE);
                         recyclerView.setVisibility(View.VISIBLE);
@@ -302,23 +288,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    //optionmenu Creating
-
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        MyApplication.ActivityResumed();
-            progressBar.setVisibility(View.GONE);
-            recyclerView.setVisibility(View.VISIBLE);
-
-
-    }
 
     @Override
     protected void onPause() {
         super.onPause();
-        MyApplication.ActivityPaused();
     }
 
     @Override

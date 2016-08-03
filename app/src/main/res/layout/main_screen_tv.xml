@@ -4,23 +4,25 @@
     android:orientation="vertical"
     android:layout_weight="1"
     android:layout_width="match_parent"
+
     android:layout_height="wrap_content"
-    android:background="@color/lightPrimaryColor"
     >
     <TextView
         android:id="@+id/text_tv"
         android:layout_width="wrap_content"
-        android:text="Tv shows airing this week"
+        android:text="Tv Shows Airing This Week"
         android:gravity="start|center_vertical"
-        android:textColor="@android:color/black"
-        android:textSize="14sp"
-        android:layout_margin="15dp"
+        android:textColor="#113a66"
+        android:textSize="18sp"
+        android:layout_margin="10dp"
         android:layout_height="wrap_content" />
     <Button
         android:layout_width="wrap_content"
         android:text="TvShows"
         android:id="@+id/tvshows"
+        android:background="@drawable/rectangle"
         android:gravity="start|center_vertical"
+        android:layout_margin="4dp"
         android:layout_alignParentRight="true"
         android:textColor="@android:color/black"
         android:textSize="16sp"
@@ -28,20 +30,19 @@
     <cn.trinea.android.view.autoscrollviewpager.AutoScrollViewPager
         android:id="@+id/tv_viewpager"
         android:layout_below="@+id/tvshows"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:layout_width="match_parent"
-        android:layout_height="150dp">
+        android:layout_margin="4dp"
+        android:layout_height="170dp">
 
     </cn.trinea.android.view.autoscrollviewpager.AutoScrollViewPager>
     <com.viewpagerindicator.CirclePageIndicator
         android:id="@+id/tv_viewpager_indicator"
         android:layout_width="match_parent"
         android:layout_below="@+id/tv_viewpager"
-        app:fillColor="@color/colorPrimary"
+        app:fillColor="#fce51c"
         app:paddingEnd="2dp"
         app:paddingStart="2dp"
-        app:pageColor="@color/Blueblack"
+        app:pageColor="#000000"
         app:strokeColor="#ffffff"
         app:strokeWidth="0dp"
         app:centered="true"

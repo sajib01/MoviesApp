@@ -24,8 +24,9 @@ import info.sajib.moviesapp.volleysingleton.VolleySingleton;
  * Created by sajib on 07-04-2016.
  */
 public class Main_screen_Adapter3 extends RecyclerView.Adapter<Main_screen_Adapter3.Mainviewholder> {
-    Context context;
-    List<Upcoming> upitem = Collections.emptyList();
+
+    private Context context;
+    private List<Upcoming> upitem = Collections.emptyList();
 
     public Main_screen_Adapter3(Context context, List<Upcoming> upitem) {
         this.context = context;

@@ -20,8 +20,8 @@ import info.sajib.moviesapp.slidingtab.SlidingTabLayout;
  * Created by sajib on 09-04-2016.
  */
 public class Tvshow extends AppCompatActivity {
-    ViewPager viewpager;
-    SlidingTabLayout slidingTabLayout;
+    private ViewPager viewpager;
+    private SlidingTabLayout slidingTabLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
