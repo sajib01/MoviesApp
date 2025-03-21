@@ -1,12 +1,14 @@
 package info.sajib.moviesapp.pagetransformer;
 
-import android.support.v4.view.ViewPager;
 import android.view.View;
+
+import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
 
 /**
  * Created by sajib on 12-03-2016.
  */
-public class DepthPageTransformer implements ViewPager.PageTransformer {
+public class DepthPageTransformer implements ViewPager2.PageTransformer {
     private static final float MIN_SCALE = 0.75f;
     @Override
     public void transformPage(View view, float position) {

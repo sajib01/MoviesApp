@@ -8,6 +8,6 @@
 <de.hdodenhof.circleimageview.CircleImageView
     android:layout_width="64dp"
     android:layout_height="64dp"
-    app:civ_fill_color="@color/colorPrimaryDark"
+    app:civ_circle_background_color="@color/colorPrimaryDark"
     />
 </LinearLayout>

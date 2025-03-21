@@ -2,22 +2,24 @@ package info.sajib.moviesapp.activity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,17 +32,17 @@ import java.util.List;
 
 import info.sajib.moviesapp.MyApplication;
 import info.sajib.moviesapp.R;
+import info.sajib.moviesapp.custom.AutoScrollViewPager2;
 import info.sajib.moviesapp.volleysingleton.VolleySingleton;
 import info.sajib.moviesapp.adapter.Cast_details_adapter;
 import info.sajib.moviesapp.adapter.Cast_pager_adapter;
-import info.sajib.moviesapp.custom.Customviewpager;
 import info.sajib.moviesapp.endpoints.Endpoint;
 import info.sajib.moviesapp.pagetransformer.Zoompagetransformer;
 import info.sajib.moviesapp.pojo.Movie;
 import info.sajib.moviesapp.pojo.PersonDetails;
 import info.sajib.moviesapp.pojo.Upcoming;
 
-public class CastDetailsActivity extends AppCompatActivity{
+public class CastDetailsActivity extends AppCompatActivity {
     private RequestQueue requestqueue;
     private int id;
     private String mEndpoint;
@@ -57,7 +59,7 @@ public class CastDetailsActivity extends AppCompatActivity{
     private CollapsingToolbarLayout collapsingToolbarLayout;
     private int colr;
     private Cast_pager_adapter cast_pager_adapter;
-    private Customviewpager viewPager;
+    private AutoScrollViewPager2 viewPager;
     private ProgressDialog mProgress;
 
     @Override
@@ -95,13 +97,13 @@ public class CastDetailsActivity extends AppCompatActivity{
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         collapsingToolbarLayout.setTitle(" ");
 
-        viewPager = (Customviewpager) findViewById(R.id.cast_details_viewpager);
+        viewPager = findViewById(R.id.cast_details_viewpager);
         cast_pager_adapter = new Cast_pager_adapter(this, listitem);
 
     }
 
     private void sendjsonrequest(String mEndpoint) {
-        jsonobjectrequest = new JsonObjectRequest(Request.Method.GET, mEndpoint, (String) null, new Response.Listener<JSONObject>() {
+        jsonobjectrequest = new JsonObjectRequest(Request.Method.GET, mEndpoint,  null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 personDetailsList = parsejson(response);
@@ -152,7 +154,7 @@ public class CastDetailsActivity extends AppCompatActivity{
     }
 
     private void sendjsonrequest2(String mEnd) {
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, mEnd, (String) null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, mEnd,  null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
 
@@ -212,7 +214,7 @@ public class CastDetailsActivity extends AppCompatActivity{
     }
 
     private void sendjsonrequest3(String mEndp) {
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, mEndp, (String) null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, mEndp, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
 
@@ -317,7 +319,7 @@ public class CastDetailsActivity extends AppCompatActivity{
         }
         viewPager.setInterval(5000);
         viewPager.setStopScrollWhenTouch(true);
-        viewPager.setPageTransformer(false, new Zoompagetransformer(this));
+        viewPager.setPageTransformer(new Zoompagetransformer(this));
     }
 
 

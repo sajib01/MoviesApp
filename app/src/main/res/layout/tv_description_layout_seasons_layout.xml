@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_below="@+id/tv_description_layout_season_layout_seasonname"
     android:clickable="true"
+    android:focusable="true"
     android:foreground="?android:attr/selectableItemBackground"
     app:cardElevation="8dp"
     app:cardUseCompatPadding="true">
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <info.sajib.moviesapp.custom.FadeInNetworkImageView
@@ -20,9 +22,9 @@
             android:id="@+id/one"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:text="Season no:"
-            android:layout_toRightOf="@+id/tv_description_layout_season_layout_posterpath"
+            android:layout_marginStart="8dp"
+            android:text="@string/season_no"
+            android:layout_toEndOf="@+id/tv_description_layout_season_layout_posterpath"
             android:textColor="@android:color/black"
             android:textSize="16sp" />
 
@@ -30,8 +32,8 @@
             android:id="@+id/tv_description_layout_season_layout_seasonname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/tv_description_layout_season_layout_posterpath"
-            android:text="5"
+            android:layout_toEndOf="@+id/tv_description_layout_season_layout_posterpath"
+            tools:text="5"
             android:layout_margin="8dp"
             android:layout_below="@+id/one"
             android:textColor="@color/colorPrimary"
@@ -41,9 +43,9 @@
             android:id="@+id/two"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_toRightOf="@+id/tv_description_layout_season_layout_posterpath"
-            android:text="Episodes:"
+            android:layout_marginStart="8dp"
+            android:layout_toEndOf="@+id/tv_description_layout_season_layout_posterpath"
+            android:text="@string/episodes"
             android:layout_below="@+id/tv_description_layout_season_layout_seasonname"
             android:textColor="@android:color/black"
             android:textSize="16sp" />
@@ -52,8 +54,8 @@
             android:id="@+id/tv_description_layout_season_layout_episodeno"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/tv_description_layout_season_layout_posterpath"
-            android:text="20"
+            android:layout_toEndOf="@+id/tv_description_layout_season_layout_posterpath"
+            tools:text="20"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginRight="8dp"
@@ -66,11 +68,11 @@
             android:id="@+id/tv_description_layout_season_layout_overview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/tv_description_layout_season_layout_posterpath"
-            android:text="sajib"
-            android:layout_marginLeft="8dp"
+            android:layout_toEndOf="@+id/tv_description_layout_season_layout_posterpath"
+            tools:text="sajib"
+            android:layout_marginStart="8dp"
             android:layout_below="@+id/tv_description_layout_season_layout_episodeno"
             android:textColor="@color/colorPrimary"
             android:textSize="12sp" />
     </RelativeLayout>
-</android.support.v7.widget.CardView>
+</androidx.cardview.widget.CardView>

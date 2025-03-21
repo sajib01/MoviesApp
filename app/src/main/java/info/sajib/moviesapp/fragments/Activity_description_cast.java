@@ -3,22 +3,23 @@ package info.sajib.moviesapp.fragments;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -31,6 +32,7 @@ import info.sajib.moviesapp.MyApplication;
 import info.sajib.moviesapp.R;
 import info.sajib.moviesapp.activity.CastDetailsActivity;
 import info.sajib.moviesapp.adapter.MovieCastAdapter;
+import info.sajib.moviesapp.custom.HorizontalDividerItemDecoration;
 import info.sajib.moviesapp.endpoints.Endpoint;
 import info.sajib.moviesapp.pojo.Casts;
 import info.sajib.moviesapp.recyclertouchlistner.ClickListner;
@@ -74,7 +76,7 @@ public class Activity_description_cast extends Fragment {
                              Bundle savedInstanceState) {
         View cast = inflater.inflate(R.layout.activity_description_cast, container, false);
 
-        recyclerView= (RecyclerView) cast.findViewById(R.id.activity_description_cast_recycler);
+        recyclerView= cast.findViewById(R.id.activity_description_cast_recycler);
         LinearLayoutManager layoutManager=new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         adapter=new MovieCastAdapter(getActivity(),castsList);
@@ -108,15 +110,12 @@ public class Activity_description_cast extends Fragment {
         }));
 
         recyclerView.addItemDecoration(
-                new HorizontalDividerItemDecoration.Builder(getActivity())
-                        .drawable(R.drawable.line)
-                        .size(1)
-                        .build());
+                new HorizontalDividerItemDecoration(getActivity(), Color.BLACK, 1));
         return cast;
     }
 
     private void SendRequestjson(String mEndpoint) {
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, mEndpoint, (String) null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, mEndpoint, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
 

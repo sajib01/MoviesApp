@@ -5,14 +5,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <info.sajib.moviesapp.slidingtab.SlidingTabLayout
+    <com.google.android.material.tabs.TabLayout
         android:id="@+id/tv_show_slidingtab"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
         android:elevation="2dp"
         >
-    </info.sajib.moviesapp.slidingtab.SlidingTabLayout>
+    </com.google.android.material.tabs.TabLayout>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/tv_show_viewpager"

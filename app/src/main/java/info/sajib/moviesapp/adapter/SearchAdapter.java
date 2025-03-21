@@ -1,13 +1,14 @@
 package info.sajib.moviesapp.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.squareup.picasso.Picasso;
@@ -53,8 +54,8 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.Myviewhold
         Url = Endpoint.IMAGE + "/w92/" + current.getPosterPath();
 
         int color = context.getResources().getColor(R.color.white);
-        Picasso.with(context).load(Url).noFade().error(R.drawable.yoimage).into(holder.imageView);
-        Picasso.with(context).load(Endpoint.IMAGE + "/w92" + current.getBackdropPath()).error(color).resize(92, 100).centerInside().into(holder.imageView2);
+        Picasso.get().load(Url).noFade().error(R.drawable.yoimage).into(holder.imageView);
+        Picasso.get().load(Endpoint.IMAGE + "/w92" + current.getBackdropPath()).error(color).resize(92, 100).centerInside().into(holder.imageView2);
 
     }
 

@@ -6,9 +6,6 @@ import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.graphics.PointF;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.view.MotionEventCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.util.FloatMath;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
@@ -18,6 +15,8 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 import android.widget.VideoView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;

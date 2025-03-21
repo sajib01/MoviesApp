@@ -1,11 +1,12 @@
 package info.sajib.moviesapp.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
@@ -37,7 +38,7 @@ public class MovieCastAdapter extends RecyclerView.Adapter<MovieCastAdapter.View
     @Override
     public void onBindViewHolder(MovieCastAdapter.Viewholder holder, int position) {
         Casts casts=castses.get(position);
-        Picasso.with(context).load(Endpoint.IMAGE+"/w185/"+casts.getCharaterimage()).error(R.drawable.yoimage).into(holder.actorimage);
+        Picasso.get().load(Endpoint.IMAGE+"/w185/"+casts.getCharaterimage()).error(R.drawable.yoimage).into(holder.actorimage);
         holder.actorname.setText(casts.getCast());
         holder.charactername.setText(casts.getChracter());
 

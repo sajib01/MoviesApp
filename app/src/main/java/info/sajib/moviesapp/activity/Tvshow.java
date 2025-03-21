@@ -1,55 +1,56 @@
 package info.sajib.moviesapp.activity;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
+import androidx.viewpager2.widget.ViewPager2;
+
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 
 import info.sajib.moviesapp.R;
 import info.sajib.moviesapp.fragments.TvairingToday;
 import info.sajib.moviesapp.fragments.Tvon_The_Air;
 import info.sajib.moviesapp.fragments.Tvpopular;
 import info.sajib.moviesapp.fragments.Tvtop_Rated;
-import info.sajib.moviesapp.slidingtab.SlidingTabLayout;
 
 /**
  * Created by sajib on 09-04-2016.
  */
 public class Tvshow extends AppCompatActivity {
-    private ViewPager viewpager;
-    private SlidingTabLayout slidingTabLayout;
+    private ViewPager2 viewpager;
+    private TabLayout slidingTabLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tvshow);
 
-        viewpager= (ViewPager) findViewById(R.id.tv_show_viewpager);
-        slidingTabLayout= (SlidingTabLayout) findViewById(R.id.tv_show_slidingtab);
+        viewpager=  findViewById(R.id.tv_show_viewpager);
+        slidingTabLayout= findViewById(R.id.tv_show_slidingtab);
 
-        viewpager.setAdapter(new tvfragmentadapter(getSupportFragmentManager()));
-        slidingTabLayout.setDistributeEvenly(true);
-        slidingTabLayout.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
-            @Override
-            public int getIndicatorColor(int position) {
-                return getResources().getColor(R.color.tabsScrollColor);
-            }
-        });
-        slidingTabLayout.setViewPager(viewpager);
+        viewpager.setAdapter(new TVFragmentAdapter(this));
+
+        new TabLayoutMediator(slidingTabLayout, viewpager,
+                (tab, position) -> tab.setText("OBJECT " + (position + 1))
+        ).attach();
     }
 
-    class tvfragmentadapter extends FragmentStatePagerAdapter {
+    class TVFragmentAdapter extends FragmentStateAdapter {
         String tabs[];
-        public tvfragmentadapter(FragmentManager supportFragmentManager) {
-            super(supportFragmentManager);
+
+        public TVFragmentAdapter(@NonNull FragmentActivity fragmentActivity) {
+            super(fragmentActivity);
             tabs=getResources().getStringArray(R.array.Tvtab);
         }
 
+
+        @NonNull
         @Override
-        public Fragment getItem(int position) {
+        public androidx.fragment.app.Fragment createFragment(int position) {
             Fragment fragment=null;
             if(position==0)
             {
@@ -72,14 +73,8 @@ public class Tvshow extends AppCompatActivity {
         }
 
         @Override
-        public CharSequence getPageTitle(int position) {
-            return tabs[position];
-        }
-
-        @Override
-        public int getCount() {
+        public int getItemCount() {
             return 4;
         }
-
     }
 }

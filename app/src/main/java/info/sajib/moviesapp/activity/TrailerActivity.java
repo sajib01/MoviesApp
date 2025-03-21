@@ -41,7 +41,7 @@ public class TrailerActivity extends YouTubeBaseActivity implements YouTubePlaye
         if (errorReason.isUserRecoverableError()) {
             errorReason.getErrorDialog(this, RECOVERY_REQUEST).show();
         } else {
-            String error = String.format(getString(R.string.player_error), errorReason.toString());
+            String error = String.format(getString(R.string.player_error), errorReason);
         }
     }
 

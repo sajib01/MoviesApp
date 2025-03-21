@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_weight="1"
     android:layout_width="match_parent"
-
     android:layout_height="wrap_content"
     >
     <TextView
         android:id="@+id/text_tv"
         android:layout_width="wrap_content"
-        android:text="Tv Shows Airing This Week"
+        android:text="@string/tv_shows_airing_this_week"
         android:gravity="start|center_vertical"
         android:textColor="#113a66"
         android:textSize="18sp"
@@ -18,35 +16,35 @@
         android:layout_height="wrap_content" />
     <Button
         android:layout_width="wrap_content"
-        android:text="TvShows"
+        android:text="@string/tvshows"
         android:id="@+id/tvshows"
         android:background="@drawable/rectangle"
         android:gravity="start|center_vertical"
         android:layout_margin="4dp"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:textColor="@android:color/black"
         android:textSize="16sp"
         android:layout_height="wrap_content"/>
-    <cn.trinea.android.view.autoscrollviewpager.AutoScrollViewPager
+    <info.sajib.moviesapp.custom.AutoScrollViewPager2
         android:id="@+id/tv_viewpager"
         android:layout_below="@+id/tvshows"
         android:layout_width="match_parent"
         android:layout_margin="4dp"
         android:layout_height="170dp">
 
-    </cn.trinea.android.view.autoscrollviewpager.AutoScrollViewPager>
-    <com.viewpagerindicator.CirclePageIndicator
-        android:id="@+id/tv_viewpager_indicator"
-        android:layout_width="match_parent"
-        android:layout_below="@+id/tv_viewpager"
-        app:fillColor="#fce51c"
-        app:paddingEnd="2dp"
-        app:paddingStart="2dp"
-        app:pageColor="#000000"
-        app:strokeColor="#ffffff"
-        app:strokeWidth="0dp"
-        app:centered="true"
-        app:radius="4dp"
-        android:layout_margin="4dp"
-        android:layout_height="20dp"></com.viewpagerindicator.CirclePageIndicator>
+    </info.sajib.moviesapp.custom.AutoScrollViewPager2>
+<!--    <com.viewpagerindicator.CirclePageIndicator-->
+<!--        android:id="@+id/tv_viewpager_indicator"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_below="@+id/tv_viewpager"-->
+<!--        app:fillColor="#fce51c"-->
+<!--        app:paddingEnd="2dp"-->
+<!--        app:paddingStart="2dp"-->
+<!--        app:pageColor="#000000"-->
+<!--        app:strokeColor="#ffffff"-->
+<!--        app:strokeWidth="0dp"-->
+<!--        app:centered="true"-->
+<!--        app:radius="4dp"-->
+<!--        android:layout_margin="4dp"-->
+<!--        android:layout_height="20dp"/>-->
 </RelativeLayout>

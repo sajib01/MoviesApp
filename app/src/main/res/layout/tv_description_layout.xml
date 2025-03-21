@@ -9,10 +9,10 @@
         android:id="@+id/tv_description_layout_viewpager"
         android:layout_width="match_parent"
         android:layout_height="190dp"/>
-<android.support.v7.widget.CardView
+<androidx.cardview.widget.CardView
     android:id="@+id/onee"
     android:layout_marginTop="160dp"
-    android:layout_marginLeft="8dp"
+    android:layout_marginStart="8dp"
     android:layout_width="wrap_content"
     app:cardElevation="8dp"
     app:cardUseCompatPadding="true"
@@ -23,14 +23,14 @@
         android:layout_height="150dp"
 
          />
-</android.support.v7.widget.CardView>
+</androidx.cardview.widget.CardView>
     <TextView
         android:id="@+id/tv_description_layout_tvshowname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_description_layout_viewpager"
-        android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@+id/onee"
+        android:layout_marginStart="10dp"
+        android:layout_toEndOf="@+id/onee"
         android:textColor="#4495f7"
         android:textSize="20sp" />
 
@@ -39,10 +39,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_description_layout_tvshowname"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:layout_toRightOf="@+id/onee"
-        android:text="First air date:"
+        android:layout_toEndOf="@+id/onee"
+        android:text="@string/first_air_date"
         android:textColor="#000000"
         android:textSize="14sp" />
 
@@ -51,9 +51,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_description_layout_tvshowname"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:layout_toRightOf="@+id/one"
+        android:layout_toEndOf="@+id/one"
         android:textColor="#113a66"
         android:textSize="14sp" />
 
@@ -62,10 +62,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/one"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:layout_toRightOf="@+id/onee"
-        android:text="Last air date:"
+        android:layout_toEndOf="@+id/onee"
+        android:text="@string/last_air_date"
         android:textColor="#000000"
         android:textSize="14sp" />
 
@@ -74,7 +74,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_description_layout_firstairdate"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_toRightOf="@+id/two"
         android:textColor="#113a66"
@@ -84,10 +84,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/two"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:layout_toRightOf="@+id/onee"
-        android:text="Vote:"
+        android:layout_toEndOf="@+id/onee"
+        android:text="@string/vote"
         android:textColor="#000000"
         android:textSize="14sp" />
 
@@ -96,7 +96,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_description_layout_lastairdate"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_toRightOf="@+id/two"
         android:textColor="#113a66"
@@ -106,9 +106,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/twoo"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:layout_toRightOf="@+id/onee"
+        android:layout_toEndOf="@+id/onee"
         android:text="Genre:"
         android:textColor="#000000"
         android:textSize="14sp" />
@@ -118,9 +118,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_description_layout_vote_average"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:layout_toRightOf="@+id/twooo"
+        android:layout_toEndOf="@+id/twooo"
         android:textColor="#113a66"
         android:textSize="14sp" />
 
@@ -129,9 +129,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/twooo"
-        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="10dp"
-        android:text="Created by:"
+        android:text="@string/created_by"
         android:textColor="#000000"
         android:textSize="14sp" />
 
@@ -140,9 +140,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/twooo"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:layout_toRightOf="@+id/onee"
+        android:layout_toEndOf="@+id/onee"
         android:textColor="#113a66"
         android:textSize="14sp" />
 
@@ -151,9 +151,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_description_layout_createdby"
-        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="10dp"
-        android:text="OverView:"
+        android:text="@string/overview"
         android:textColor="#000000"
         android:textSize="14sp" />
 
@@ -162,7 +162,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/four"
-        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="8dp"
         android:textColor="#113a66"

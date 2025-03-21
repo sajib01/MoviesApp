@@ -3,13 +3,15 @@ package info.sajib.moviesapp.fragments;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -74,7 +76,7 @@ public class Activity_description_similarmovies extends Fragment {
         // Inflate the layout for this fragment
         View v=inflater.inflate(R.layout.activity_description_similarmovies, container, false);
 
-        recyclerView= (RecyclerView) v.findViewById(R.id.activity_description_similarmovies_recyclerview);
+        recyclerView=  v.findViewById(R.id.activity_description_similarmovies_recyclerview);
         final LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getActivity());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         similar_movieAdapter=new Similar_movieAdapter(getActivity());
@@ -124,7 +126,11 @@ public class Activity_description_similarmovies extends Fragment {
     private void sendJsonRequest(int mCurrentPage) {
 
         mEndpoint= Endpoint.MOVIE+id+"/similar"+"?page="+mCurrentPage+"&api_key="+ MyApplication.TMDB_API_KEY;
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, mEndpoint, (String) null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest request = new JsonObjectRequest(
+                Request.Method.GET,
+                mEndpoint,
+                null,
+                new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 if(progressDialog.isShowing()){

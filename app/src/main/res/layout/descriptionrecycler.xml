@@ -7,11 +7,10 @@
         android:id="@+id/seven"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/six"
         android:layout_marginBottom="4dp"
-        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
         android:gravity="center_vertical"
-        android:text="CASTS:"
+        android:text="@string/casts"
         android:textColor="@android:color/black"
         android:textSize="11sp"
         android:textStyle="bold" />
@@ -20,5 +19,5 @@
         layout="@layout/recyclerview"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:layout_marginBottom="4dp"></include>
+        android:layout_marginBottom="4dp"/>
 </LinearLayout>

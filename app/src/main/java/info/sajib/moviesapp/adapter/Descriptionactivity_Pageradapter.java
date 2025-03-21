@@ -2,15 +2,15 @@ package info.sajib.moviesapp.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.app.NavUtils;
-import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.PagerAdapter;
 
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
@@ -28,7 +28,7 @@ import info.sajib.moviesapp.volleysingleton.VolleySingleton;
 /**
  * Created by sajib on 07-04-2016.
  */
-public class Descriptionactivity_Pageradapter extends PagerAdapter {
+public class Descriptionactivity_Pageradapter extends RecyclerView.Adapter<Descriptionactivity_Pageradapter.ViewHolder> {
     private List<Movie> data = Collections.emptyList();
     private ImageLoader imageLoader;
     private Context context;
@@ -39,78 +39,76 @@ public class Descriptionactivity_Pageradapter extends PagerAdapter {
         imageLoader= VolleySingleton.getInstance().getImageLoader();
     }
 
+    @NonNull
     @Override
-    public int getCount() {
+    public Descriptionactivity_Pageradapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.viewpager2_layout, parent, false));
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull Descriptionactivity_Pageradapter.ViewHolder holder, int position) {
+        final Movie movie = data.get(position);
+        holder.bind(movie);
+    }
+
+    @Override
+    public int getItemCount() {
         return data.size();
     }
 
-    @Override
-    public boolean isViewFromObject(View view, Object object) {
-        return view == (FrameLayout) object;
-    }
-
-    @Override
-    public Object instantiateItem(final ViewGroup container, int position) {
-        final Movie movie = data.get(position);
-        View view = LayoutInflater.from(context).inflate(R.layout.viewpager2_layout, container, false);
-        final ImageView imageView= (ImageView) view.findViewById(R.id.viewpager2_image);
-        final ImageView youtubeicon= (ImageView) view.findViewById(R.id.youtubeicon);
-        final ImageView picshade= (ImageView) view.findViewById(R.id.picshade);
-        youtubeicon.setImageResource(R.drawable.youtube);
-        String url=null;
-
-        if(movie.getName()!=null)
-        {
-
-          url=Endpoint.YOUTUBE_THUMBNAIL+movie.getSource()+"/hqdefault.jpg";
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        View view;
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+            this.view = itemView;
         }
-        if(movie.getName()==null)
-        {
-            url=Endpoint.IMAGE+"/w500/"+movie.getBackdropPath();
-        }
-        imageLoader.get(url, new ImageLoader.ImageListener() {
-            @Override
-            public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {
-                imageView.setImageBitmap(response.getBitmap());
+
+        public void bind(Movie movie) {
+            final ImageView imageView= view.findViewById(R.id.viewpager2_image);
+            final ImageView youtubeicon= view.findViewById(R.id.youtubeicon);
+            final ImageView picshade= view.findViewById(R.id.picshade);
+            youtubeicon.setImageResource(R.drawable.youtube);
+            String url=null;
+
+            if(movie.getName()!=null)
+            {
+
+                url=Endpoint.YOUTUBE_THUMBNAIL+movie.getSource()+"/hqdefault.jpg";
             }
-
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
+            if(movie.getName()==null)
+            {
+                url=Endpoint.IMAGE+"/w500/"+movie.getBackdropPath();
             }
-        });
-
-        if(movie.getName()!=null)
-        {
-            youtubeicon.setVisibility(View.VISIBLE);
-            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            imageView.setOnClickListener(new View.OnClickListener() {
+            imageLoader.get(url, new ImageLoader.ImageListener() {
                 @Override
-                public void onClick(View v) {
+                public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {
+                    imageView.setImageBitmap(response.getBitmap());
+                }
+
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+                }
+            });
+
+            if(movie.getName()!=null)
+            {
+                youtubeicon.setVisibility(View.VISIBLE);
+                imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                imageView.setOnClickListener(v -> {
                     Intent intent=new Intent(context, TrailerActivity.class);
                     intent.putExtra("trailerid",movie.getSource());
                     context.startActivity(intent);
-                }
-            });
-        }
-        if(movie.getName()==null)
-        {
-            imageView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+                });
+            }
+            if(movie.getName()==null)
+            {
+                imageView.setOnClickListener(v -> {
                     Intent intent=new Intent(context, Picactivity.class);
                     intent.putExtra("movieid",movie.getId());
                     context.startActivity(intent);
-                }
-            });
+                });
+            }
         }
-
-        container.addView(view);
-        return view;
-    }
-
-    @Override
-    public void destroyItem(ViewGroup container, int position, Object object) {
-        container.removeView((FrameLayout) object);
     }
 }

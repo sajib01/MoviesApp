@@ -3,12 +3,13 @@ package info.sajib.moviesapp.activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -121,7 +122,7 @@ public class Upcomingmovie extends AppCompatActivity {
 
     private void sendJsonRequest(int mCurrentPage) {
         mEndpoint = Endpoint.MOVIE + "upcoming" + "?page=" + mCurrentPage + "&api_key=" + MyApplication.TMDB_API_KEY + "&language=en";
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, mEndpoint, (String) null,new Response.Listener<JSONObject>() {
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, mEndpoint, null,new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
 

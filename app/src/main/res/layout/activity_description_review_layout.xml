@@ -2,26 +2,27 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
     <TextView
         android:id="@+id/dummy"
         android:layout_width="wrap_content"
-        android:text="A movie review by "
+        android:text="@string/a_movie_review_by"
         android:layout_marginTop="8dp"
         android:textColor="#113a66"
         android:layout_marginBottom="20dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:textSize="14sp"
         android:layout_height="wrap_content" />
     <TextView
         android:id="@+id/activity_description_review_layout_authorname"
         android:layout_width="wrap_content"
         android:textColor="@android:color/black"
-        android:layout_toRightOf="@+id/dummy"
+        android:layout_toEndOf="@+id/dummy"
         android:layout_marginTop="8dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginEnd="10dp"
         android:textSize="16sp"
-        android:text="dehodendog"
+        android:text="@string/dehodendog"
 
         android:layout_height="wrap_content" />
 
@@ -32,6 +33,6 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_height="wrap_content"
-        android:text="fdfsfadfafadf"
+        tools:text="fdfsfadfafadf"
         />
 </RelativeLayout>

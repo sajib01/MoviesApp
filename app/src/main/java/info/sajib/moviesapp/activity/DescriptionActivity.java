@@ -3,21 +3,26 @@ package info.sajib.moviesapp.activity;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.viewpagerindicator.CirclePageIndicator;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,7 +39,6 @@ import info.sajib.moviesapp.fragments.Activity_description_details;
 import info.sajib.moviesapp.fragments.Activity_description_review;
 import info.sajib.moviesapp.fragments.Activity_description_similarmovies;
 import info.sajib.moviesapp.pagetransformer.DepthPageTransformer;
-import info.sajib.moviesapp.slidingtab.SlidingTabLayout;
 import info.sajib.moviesapp.volleysingleton.VolleySingleton;
 import info.sajib.moviesapp.endpoints.Endpoint;
 import info.sajib.moviesapp.pojo.Casts;
@@ -47,9 +51,9 @@ public class DescriptionActivity extends AppCompatActivity {
     private List<Movie> data = new ArrayList<>();
     private String mEndpoint;
     private String Id;
-    private ViewPager viewPager;
-    private ViewPager viewpager1;
-    private SlidingTabLayout designSlidingTabLayout;
+    private ViewPager2 viewPager;
+    private ViewPager2 viewpager1;
+    private TabLayout designSlidingTabLayout;
     private long id;
     private Descriptionactivity_Pageradapter Dpageradapter;
     @Override
@@ -59,25 +63,21 @@ public class DescriptionActivity extends AppCompatActivity {
 
         requestQueue = VolleySingleton.getInstance().getRequestQueue();
 
-        viewPager = (ViewPager) findViewById(R.id.activity_description_viewpager1);
+         viewPager = findViewById(R.id.activity_description_viewpager1);
         Dpageradapter =new Descriptionactivity_Pageradapter(DescriptionActivity.this,data);
         viewPager.setAdapter(Dpageradapter);
-        viewPager.setPageTransformer(false,new DepthPageTransformer());
+        viewPager.setPageTransformer(new DepthPageTransformer());
 
-        viewpager1 = (ViewPager) findViewById(R.id.activity_description_viewpager2);
+        viewpager1 = findViewById(R.id.activity_description_viewpager2);
 
-        designSlidingTabLayout = (SlidingTabLayout) findViewById(R.id.activity_description_slidingtab);
+        designSlidingTabLayout = findViewById(R.id.activity_description_slidingtab);
 
-        viewpager1.setAdapter(new Myadapter(getSupportFragmentManager()));
-        designSlidingTabLayout.setDistributeEvenly(true);
-        designSlidingTabLayout.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
+        viewpager1.setAdapter(new Myadapter(this));
 
-            @Override
-            public int getIndicatorColor(int position) {
-                return getResources().getColor(R.color.tabsScrollColor);
-            }
-        });
-        designSlidingTabLayout.setViewPager(viewpager1);
+        new TabLayoutMediator(designSlidingTabLayout, viewPager,
+                (tab, position) -> tab.setText("OBJECT " + (position + 1))
+        ).attach();
+
 
         id = getIntent().getLongExtra("movieid", 0);
 
@@ -88,28 +88,19 @@ public class DescriptionActivity extends AppCompatActivity {
 
     }
 
-    class Myadapter extends FragmentStatePagerAdapter {
+    class Myadapter extends FragmentStateAdapter {
 
         String tabs[];
 
-        public Myadapter(FragmentManager fm) {
-            super(fm);
-            tabs = getResources().getStringArray(R.array.DescriptionTab   );
-
+        public Myadapter(@NonNull FragmentActivity fragmentActivity) {
+            super(fragmentActivity);
+            tabs = getResources().getStringArray(R.array.DescriptionTab);
         }
 
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return tabs[position];
-        }
 
+        @NonNull
         @Override
-        public int getCount() {
-            return 4;
-        }
-
-        @Override
-        public Fragment getItem(int position) {
+        public Fragment createFragment(int position) {
             Fragment fragment = null;
             if (position == 0) {
                 fragment = Activity_description_details.newInstance(id);
@@ -127,11 +118,16 @@ public class DescriptionActivity extends AppCompatActivity {
 
             return fragment;
         }
+
+        @Override
+        public int getItemCount() {
+            return 4;
+        }
     }
 
 
     private void SendRequestjson(String mEndpoint) {
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, mEndpoint, (String) null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, mEndpoint,  null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
 

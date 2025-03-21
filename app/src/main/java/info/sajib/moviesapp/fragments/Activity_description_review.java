@@ -3,13 +3,14 @@ package info.sajib.moviesapp.fragments;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -89,7 +90,7 @@ public class Activity_description_review extends Fragment {
     }
 
     private void SendRequestjson(String mEndpoint) {
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, mEndpoint, (String) null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, mEndpoint, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 if(progressDialog.isShowing())

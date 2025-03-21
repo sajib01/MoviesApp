@@ -4,16 +4,17 @@ package info.sajib.moviesapp.fragments;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -143,7 +144,7 @@ public class TvairingToday extends Fragment {
 
     private void Sendjsonrequest(int page) {
         mEndpoint= Endpoint.TV+"airing_today"+"?page="+page+"&api_key="+ MyApplication.TMDB_API_KEY;
-        JsonObjectRequest json=new JsonObjectRequest(Request.Method.GET, mEndpoint, (String) null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest json=new JsonObjectRequest(Request.Method.GET, mEndpoint,  null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
 

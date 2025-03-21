@@ -4,7 +4,6 @@ package info.sajib.moviesapp.fragments;
 import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -90,7 +91,7 @@ public class Activity_description_details extends Fragment {
     }
 
     private void SendJsonRequest(String url) {
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, (String) null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 if(progressDialog.isShowing())
@@ -203,7 +204,7 @@ public class Activity_description_details extends Fragment {
         }
         if(listitem.size()>0) {
             Movie movie = listitem.get(0);
-            Picasso.with(getActivity()).load(Endpoint.IMAGE + "/w185/" + movie.getPosterPath()).into(poster);
+            Picasso.get().load(Endpoint.IMAGE + "/w185/" + movie.getPosterPath()).into(poster);
             title.setText(movie.getOriginalTitle());
             date.setText(movie.getReleaseDate());
             rating.setText(String.format("%.2f", movie.getVoteAverage()));

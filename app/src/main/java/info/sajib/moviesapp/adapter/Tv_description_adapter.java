@@ -2,15 +2,14 @@ package info.sajib.moviesapp.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.toolbox.ImageLoader;
 
@@ -21,8 +20,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import cn.trinea.android.view.autoscrollviewpager.AutoScrollViewPager;
 import info.sajib.moviesapp.activity.Tv_description;
+import info.sajib.moviesapp.custom.AutoScrollViewPager2;
 import info.sajib.moviesapp.custom.FadeInNetworkImageView;
 import info.sajib.moviesapp.endpoints.Endpoint;
 import info.sajib.moviesapp.pojo.Tv;
@@ -234,11 +233,11 @@ public class Tv_description_adapter extends RecyclerView.Adapter<Tv_description_
         TextView vote;
         TextView genre;
         FadeInNetworkImageView imageView;
-        AutoScrollViewPager viewPager;
+        AutoScrollViewPager2 viewPager;
 
         public Firstvholder(View itemView) {
             super(itemView);
-            viewPager = (AutoScrollViewPager) itemView.findViewById(R.id.tv_description_layout_viewpager);
+            viewPager =  itemView.findViewById(R.id.tv_description_layout_viewpager);
             tvshowname = (TextView) itemView.findViewById(R.id.tv_description_layout_tvshowname);
             firstairdate = (TextView) itemView.findViewById(R.id.tv_description_layout_firstairdate);
             lastairdate = (TextView) itemView.findViewById(R.id.tv_description_layout_lastairdate);

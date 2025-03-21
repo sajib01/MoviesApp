@@ -2,6 +2,7 @@
 <RelativeLayout android:layout_height="70dp"
     android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_margin="8dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -16,20 +17,20 @@
     <TextView
         android:id="@+id/activity_description_cast_layout_actorname"
         android:layout_width="wrap_content"
-        android:text="ShahRukh Khan"
-        android:layout_toRightOf="@+id/activity_description_cast_layout_actorimage"
+        tools:text="ShahRukh Khan"
+        android:layout_toEndOf="@+id/activity_description_cast_layout_actorimage"
         android:textSize="18sp"
         android:textColor="@android:color/black"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/dummy"
         android:layout_width="wrap_content"
-        android:text="as"
-        android:layout_toRightOf="@+id/activity_description_cast_layout_actorimage"
-        android:layout_marginLeft="10dp"
+        android:text="@string/as"
+        android:layout_toEndOf="@+id/activity_description_cast_layout_actorimage"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_below="@+id/activity_description_cast_layout_actorname"
         android:textSize="18sp"
@@ -37,8 +38,8 @@
     <TextView
         android:id="@+id/activity_description_cast_layout_charatername"
         android:layout_width="wrap_content"
-        android:layout_toRightOf="@+id/activity_description_cast_layout_actorimage"
-        android:layout_marginLeft="35dp"
+        android:layout_toEndOf="@+id/activity_description_cast_layout_actorimage"
+        android:layout_marginStart="35dp"
         android:layout_marginTop="10dp"
         android:layout_below="@+id/activity_description_cast_layout_actorname"
         android:textSize="18sp"

@@ -8,16 +8,15 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_marginTop="4dp"
-        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
         android:layout_height="wrap_content"
         android:textColor="#113a66"
-        android:text="Known For:"
+        android:text="@string/known_for"
         android:layout_marginBottom="4dp"/>
-<android.support.v7.widget.RecyclerView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.recyclerview.widget.RecyclerView
     android:id="@+id/cast_details_knownfor_recycler"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</android.support.v7.widget.RecyclerView>
+</androidx.recyclerview.widget.RecyclerView>
 </LinearLayout>

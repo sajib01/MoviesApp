@@ -1,11 +1,12 @@
 package info.sajib.moviesapp.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
@@ -41,7 +42,7 @@ public class Main_screen_Adapter2 extends RecyclerView.Adapter<Main_screen_Adapt
     public void onBindViewHolder(final Main_screen_Adapter2.Mainviewholder holder, int position) {
         Movie movie = listitem.get(position);
         String Url = Endpoint.IMAGE + "/w185/" + movie.getPosterPath();
-        Picasso.with(context).load(Url).error(R.drawable.yoimage).into(holder.imageView);
+        Picasso.get().load(Url).error(R.drawable.yoimage).into(holder.imageView);
 
     }
 

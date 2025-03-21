@@ -2,10 +2,11 @@ package info.sajib.moviesapp.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -78,7 +79,7 @@ public class Picactivity extends AppCompatActivity {
 
     private void sendjsonrequest() {
         String url= Endpoint.MOVIE+posterpath+"?api_key=" + MyApplication.TMDB_API_KEY + "&append_to_response=casts,images,trailers&language=en&include_image_language=en,null";
-        final JsonObjectRequest request=new JsonObjectRequest(Request.Method.GET, url, (String) null, new Response.Listener<JSONObject>() {
+        final JsonObjectRequest request=new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 if(response!=null||response.length()>0)

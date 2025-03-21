@@ -8,10 +8,6 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
@@ -23,6 +19,11 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -324,7 +325,7 @@ public class Search_Engine extends AppCompatActivity {
 
     private void searchmovietitle(String mEndpoint) {
         String Endpointt = mEndpoint;
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, Endpointt, (String) null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, Endpointt, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 if (response != null || response.length() > 0) {

@@ -2,33 +2,29 @@ package info.sajib.moviesapp.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.text.Layout;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.viewpagerindicator.CirclePageIndicator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.Collections;
 import java.util.List;
 
-import cn.trinea.android.view.autoscrollviewpager.AutoScrollViewPager;
 import info.sajib.moviesapp.R;
 import info.sajib.moviesapp.activity.DescriptionActivity;
 import info.sajib.moviesapp.activity.Nowplaying;
 import info.sajib.moviesapp.activity.Tvshow;
 import info.sajib.moviesapp.activity.Upcomingmovie;
+import info.sajib.moviesapp.custom.AutoScrollViewPager2;
 import info.sajib.moviesapp.pojo.Movie;
 import info.sajib.moviesapp.pojo.Tv;
 import info.sajib.moviesapp.pojo.Upcoming;
 import info.sajib.moviesapp.recyclertouchlistner.ClickListner;
 import info.sajib.moviesapp.recyclertouchlistner.RecyclerViewTouchListner;
-import me.relex.circleindicator.CircleIndicator;
 
 /**
  * Created by sajib on 06-04-2016.
@@ -79,10 +75,10 @@ public class Main_screen_Adapter extends RecyclerView.Adapter<Main_screen_Adapte
 
             case TYPE1:
                 Firstviewholder firstviewholder= (Firstviewholder) holder;
-                viewpager1_adapter viewpageradapter=new viewpager1_adapter(context);
+                Viewpager1Adapter viewpageradapter=new Viewpager1Adapter(context);
                 firstviewholder.viewpager.setAdapter(viewpageradapter);
                 viewpageradapter.setlistitem(tvitem);
-                firstviewholder.circleIndicator.setViewPager(firstviewholder.viewpager);
+               // firstviewholder.circleIndicator.setViewPager(firstviewholder.viewpager);
                 firstviewholder.viewpager.setInterval(6000);
                 firstviewholder.viewpager.startAutoScroll(6000);
                 firstviewholder.textView.setOnClickListener(new View.OnClickListener() {
@@ -190,13 +186,13 @@ public class Main_screen_Adapter extends RecyclerView.Adapter<Main_screen_Adapte
 
     public class Firstviewholder extends MainViewHolder
     {
-        AutoScrollViewPager viewpager;
-        CirclePageIndicator circleIndicator;
+        AutoScrollViewPager2 viewpager;
+        //CirclePageIndicator circleIndicator;
         Button textView;
         public Firstviewholder(View itemView) {
             super(itemView);
-            viewpager= (AutoScrollViewPager) itemView.findViewById(R.id.tv_viewpager);
-            circleIndicator= (CirclePageIndicator) itemView.findViewById(R.id.tv_viewpager_indicator);
+            viewpager=  itemView.findViewById(R.id.tv_viewpager);
+           // circleIndicator= (CirclePageIndicator) itemView.findViewById(R.id.tv_viewpager_indicator);
             textView= (Button) itemView.findViewById(R.id.tvshows);
         }
     }

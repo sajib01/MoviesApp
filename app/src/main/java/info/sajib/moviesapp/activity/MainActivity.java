@@ -2,25 +2,27 @@ package info.sajib.moviesapp.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.google.android.material.navigation.NavigationView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -107,27 +109,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
 
-                if (item.isChecked()) {
-                    item.setChecked(false);
-                } else {
-                    item.setChecked(true);
-                }
+                item.setChecked(!item.isChecked());
 
                 mDrawerLayout.closeDrawers();
 
-                switch (item.getItemId()) {
-                    case R.id.movie: {
-
-                        return true;
-                    }
-                    case R.id.tv: {
-                        startActivity(new Intent(MainActivity.this, Tvshow.class));
-                        return true;
-                    }
-                    default: {
-                        Toast.makeText(getApplicationContext(), "You Have Selected Nothing", Toast.LENGTH_SHORT).show();
-                        return true;
-                    }
+                if (item.getItemId() == R.id.movie) {
+                    return true;
+                } else if (item.getItemId() == R.id.tv) {
+                    startActivity(new Intent(MainActivity.this, Tvshow.class));
+                    return true;
+                }else{
+                    Toast.makeText(getApplicationContext(), "You Have Selected Nothing", Toast.LENGTH_SHORT).show();
+                    return true;
                 }
 
             }
@@ -137,8 +130,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void sendJsonRequest() {
-        String url = Endpoint.MOVIE + "now_playing" + "?api_key=" + MyApplication.TMDB_API_KEY + "&language=en";
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, (String) null, new Response.Listener<JSONObject>() {
+        String url = Endpoint.MOVIE + "now_playing" + "?api_key=" + MyApplication.TMDB_API_KEY + "&language=en-US&page=1";
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url,  null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 progressBar.setVisibility(View.GONE);
@@ -174,7 +167,8 @@ public class MainActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                String errorMessage = (error != null && error.getMessage() != null) ? error.getMessage() : "Unknown error occurred";
+                Log.d("VolleyError", errorMessage);
             }
         });
         requestQueue.add(request);
@@ -184,7 +178,7 @@ public class MainActivity extends AppCompatActivity {
     private void sendJsonRequest2() {
 
         String url1 = Endpoint.TV + "on_the_air" + "?api_key=" + MyApplication.TMDB_API_KEY;
-        JsonObjectRequest request1 = new JsonObjectRequest(Request.Method.GET, url1, (String) null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest request1 = new JsonObjectRequest(Request.Method.GET, url1,  null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 sendJsonRequest3();
@@ -227,7 +221,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void sendJsonRequest3() {
         String url2 = Endpoint.MOVIE + "upcoming" + "?api_key=" + MyApplication.TMDB_API_KEY + "&language=en";
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url2, (String) null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url2, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
 

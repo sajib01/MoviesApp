@@ -1,10 +1,11 @@
 package info.sajib.moviesapp.pagetransformer;
 
 import android.content.Context;
-import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewPropertyAnimator;
 import android.view.animation.Animation;
+
+import androidx.viewpager2.widget.ViewPager2;
 
 import java.util.Random;
 
@@ -13,7 +14,7 @@ import info.sajib.moviesapp.R;
 /**
  * Created by sajib on 11-03-2016.
  */
-public class Zoompagetransformer implements ViewPager.PageTransformer {
+public class Zoompagetransformer implements ViewPager2.PageTransformer {
     Context context;
 
     public Zoompagetransformer(Context context) {

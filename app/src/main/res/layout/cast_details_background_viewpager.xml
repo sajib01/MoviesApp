@@ -8,7 +8,7 @@
     android:orientation="vertical"
     tools:context="info.sajib.moviesapp.activity.CastDetailsActivity">
 
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
         android:id="@+id/cast_details_imageview1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -22,17 +22,18 @@
             android:id="@+id/cast_details_imageview"
             android:layout_width="110dp"
             android:layout_height="140dp"
+            android:contentDescription="@string/cast_picture"
             android:scaleType="fitXY"
             android:transitionName="castimage"
             />
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/cast_details_actorname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
-        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_toRightOf="@+id/cast_details_imageview1"
         android:textColor="@android:color/white"
@@ -44,8 +45,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/cast_details_imageview1"
         android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:text="Overview:"
+        android:layout_marginStart="8dp"
+        android:text="@string/overview"
         android:textColor="@android:color/black" />
 
     <TextView
@@ -63,10 +64,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
-        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:layout_toRightOf="@+id/cast_details_imageview1"
-        android:text="Person Fact:"
+        android:layout_toEndOf="@+id/cast_details_imageview1"
+        android:text="@string/person_fact"
         android:textColor="@android:color/black" />
 
 
@@ -89,7 +90,7 @@
         android:layout_marginBottom="4dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_toRightOf="@+id/cast_details_imageview1"
+        android:layout_toEndOf="@+id/cast_details_imageview1"
         android:textColor="#113a66" />
 
     <TextView
@@ -98,9 +99,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/cast_details_birthday"
         android:layout_marginBottom="4dp"
-        android:layout_marginLeft="8dp"
-        android:layout_toRightOf="@+id/cast_details_imageview1"
-        android:text="Place Of Birth:"
+        android:layout_marginStart="8dp"
+        android:layout_toEndOf="@+id/cast_details_imageview1"
+        android:text="@string/place_of_birth"
         android:textColor="@android:color/black" />
 
     <TextView
@@ -111,6 +112,6 @@
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_toRightOf="@+id/cast_details_imageview1"
+        android:layout_toEndOf="@+id/cast_details_imageview1"
         android:textColor="#686767" />
 </RelativeLayout>

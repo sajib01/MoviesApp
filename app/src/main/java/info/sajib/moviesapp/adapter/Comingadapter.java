@@ -1,12 +1,13 @@
 package info.sajib.moviesapp.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
@@ -38,7 +39,7 @@ public class Comingadapter extends RecyclerView.Adapter<Comingadapter.MyviewHold
         Upcoming upcoming=list.get(position);
         holder.textView.setText(upcoming.getOriginalTitle());
         String url= Endpoint.IMAGE+"/w185"+upcoming.getPosterPath();
-        Picasso.with(context).load(url).error(R.drawable.yoimage).into(holder.imageView);
+        Picasso.get().load(url).error(R.drawable.yoimage).into(holder.imageView);
     }
 
     @Override

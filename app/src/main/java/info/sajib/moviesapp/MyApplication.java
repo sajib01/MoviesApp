@@ -16,8 +16,8 @@ import java.security.NoSuchAlgorithmException;
  * Created by sajib on 11-02-2016.
  */
 public class MyApplication extends Application {
-    public static final String TMDB_API_KEY = "1a5181bae7321952c7494e3acc7e7868";
-    public static final String YOUTUBE_API_KEY = "AIzaSyARa5gHZsrJ2rpiEijtC6ENhWkTdbYugGQ";
+    public static final String TMDB_API_KEY = BuildConfig.TMDB_API_KEY;
+    public static final String YOUTUBE_API_KEY = BuildConfig.YOUTUBE_API_KEY;
     private static MyApplication sInstance;
     private static boolean activityvisible;
     @Override

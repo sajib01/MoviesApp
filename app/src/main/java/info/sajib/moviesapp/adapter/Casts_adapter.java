@@ -1,13 +1,15 @@
 package info.sajib.moviesapp.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.squareup.picasso.Picasso;
 import java.util.Collections;
 import java.util.List;
@@ -39,7 +41,7 @@ public class Casts_adapter extends RecyclerView.Adapter<Casts_adapter.Myviewhold
         String url= Endpoint.IMAGE+"/w185/"+movie.getCharaterimage();
         holder.textView.setText(movie.getCast());
         holder.textView1.setText(movie.getChracter());
-        Picasso.with(context).load(url).error(R.drawable.yoimage).into(holder.imageView);
+        Picasso.get().load(url).error(R.drawable.yoimage).into(holder.imageView);
     }
 
     @Override

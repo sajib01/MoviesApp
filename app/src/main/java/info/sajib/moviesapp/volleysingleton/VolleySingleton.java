@@ -18,9 +18,7 @@ public class VolleySingleton {
     private VolleySingleton() {
         requestQueue = Volley.newRequestQueue(MyApplication.getAppContext());
         imageLoader = new ImageLoader(requestQueue,BitmapLruCache.getInstance());
-
     }
-
 
     public RequestQueue getRequestQueue() {
         return requestQueue;

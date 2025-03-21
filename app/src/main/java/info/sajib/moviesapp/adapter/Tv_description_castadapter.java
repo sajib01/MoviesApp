@@ -1,12 +1,13 @@
 package info.sajib.moviesapp.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
@@ -46,7 +47,7 @@ public class Tv_description_castadapter extends RecyclerView.Adapter<Tv_descript
         Tvcast tvcast=tvcastdata.get(position);
         holder.Originalname.setText(tvcast.getName());
         String url= Endpoint.IMAGE+"/w185/"+tvcast.getProfile_path();
-        Picasso.with(context).load(url).error(R.drawable.yoimage).into(holder.imageView);
+        Picasso.get().load(url).error(R.drawable.yoimage).into(holder.imageView);
         holder.charactername.setText("("+tvcast.getCharacter()+")");
 
     }

@@ -1,11 +1,12 @@
 package info.sajib.moviesapp.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
@@ -37,7 +38,7 @@ public class KnownforAdapter extends RecyclerView.Adapter<KnownforAdapter.MyView
     public void onBindViewHolder(MyViewholder holder, int position) {
         Movie movie=listitem.get(position);
         String url= Endpoint.IMAGE+"/w185/"+movie.getPosterPath();
-        Picasso.with(context).load(url).error(R.drawable.yoimage).into(holder.imageview);
+        Picasso.get().load(url).error(R.drawable.yoimage).into(holder.imageview);
     }
 
 

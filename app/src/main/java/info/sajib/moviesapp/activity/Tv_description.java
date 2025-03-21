@@ -2,12 +2,12 @@ package info.sajib.moviesapp.activity;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Gravity;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -73,7 +73,7 @@ public class Tv_description extends AppCompatActivity {
     private void senjsonrequest() {
         String mEndpoin = Endpoint.TV + id + "?api_key=" + MyApplication.TMDB_API_KEY + "&append_to_response=credits,images,similar";
 
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, mEndpoin, (String) null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, mEndpoin, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 if (progressDialog.isShowing()) {

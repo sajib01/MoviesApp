@@ -1,53 +1,63 @@
 apply plugin: 'com.android.application'
 
+def localProperties = new Properties()
+localProperties.load(new FileInputStream(rootProject.file("local.properties")))
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.2"
+    namespace = "info.sajib.moviesapp"
+    compileSdkVersion 35  // Updated to latest stable version
 
     defaultConfig {
         applicationId "info.sajib.moviesapp"
-        minSdkVersion 19
-        targetSdkVersion 23
+        minSdkVersion 21
+        targetSdkVersion 35
         versionCode 1
         versionName "1.0"
         renderscriptTargetApi 18
         renderscriptSupportModeEnabled true
-
-
+        buildConfigField "String", "TMDB_API_KEY", "${localProperties.getProperty('TMDB_API_KEY')}"
+        buildConfigField "String", "YOUTUBE_API_KEY", "${localProperties.getProperty('YOUTUBE_API_KEY')}"
     }
+
+    buildFeatures{
+        buildConfig true
+    }
+
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
 }
+
 repositories {
-    maven {
-        url "https://jitpack.io"
-    }
+    google()  // Ensure Google's Maven repo is present
+    mavenCentral()
+    maven { url "https://jitpack.io" }
 }
+
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
-    compile('cn.trinea.android.view.autoscrollviewpager:android-auto-scroll-view-pager:1.1.2') {
-        exclude module: 'support-v4'
-    }
-    compile files('libs/YouTubeAndroidPlayerApi.jar')
-    compile 'com.android.support:appcompat-v7:23.3.0'
-    compile 'com.android.support:design:23.3.0'
-    compile ('com.android.support:support-v4:23.4.0'){
-        force = true;
-    }
-    compile 'com.android.support:cardview-v7:23.3.0'
-    compile 'com.android.support:recyclerview-v7:23.3.0'
-    compile 'me.relex:circleindicator:1.1.8@aar'
-    compile 'de.hdodenhof:circleimageview:2.0.0'
-    compile 'com.squareup.picasso:picasso:2.5.2'
-    compile 'com.mcxiaoke.volley:library:1.0.19'
-    compile 'com.android.support:palette-v7:23.3.0'
-    compile 'com.mcxiaoke.viewpagerindicator:library:2.4.1'
-    compile 'com.yqritc:recyclerview-flexibledivider:1.2.9'
-    compile 'it.sephiroth.android.library.imagezoom:imagezoom:+'
-    compile 'com.github.bumptech.glide:glide:3.5.2'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation 'junit:junit:4.13.2'  // Updated JUnit version
+
+    // UI Components
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'com.google.android.material:material:1.12.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.4.0'
+
+    // Networking & Image Loading
+    implementation 'com.squareup.picasso:picasso:2.8'
+    implementation 'com.github.bumptech.glide:glide:4.15.1'
+    implementation 'com.android.volley:volley:1.2.1'
+
+    // Circular Views
+    implementation 'me.relex:circleindicator:2.1.6'
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    // Image Zoom
+    implementation 'it.sephiroth.android.library.imagezoom:imagezoom:2.3.0'
+
+    // YouTube Player
+    implementation files('libs/YouTubeAndroidPlayerApi.jar')
 }
