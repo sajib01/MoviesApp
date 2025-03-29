@@ -131,44 +131,43 @@ public class MainActivity extends AppCompatActivity {
 
     private void sendJsonRequest() {
         String url = Endpoint.MOVIE + "now_playing" + "?api_key=" + MyApplication.TMDB_API_KEY + "&language=en-US&page=1";
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url,  null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                progressBar.setVisibility(View.GONE);
-                sendJsonRequest2();
-                if (response != null || response.length() > 0) {
-                    try {
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url,  null, response -> {
+            progressBar.setVisibility(View.GONE);
+            sendJsonRequest2();
+            if (response != null || response.length() > 0) {
+                try {
 
-                        JSONArray jsonArray = response.getJSONArray("results");
+                    JSONArray jsonArray = response.getJSONArray("results");
 
-                        for (int i = 0; i < jsonArray.length(); i++) {
-                            JSONObject Object = jsonArray.getJSONObject(i);
-                            if (Object.has("poster_path") && !Object.isNull("poster_path")) {
-                                String posterpath = Object.getString("poster_path");
-                                int id = Object.getInt("id");
-                                String orginalname = Object.getString("original_title");
-                                Movie movie = new Movie();
-                                movie.setPosterPath(posterpath);
-                                movie.setId(id);
-                                movie.setOriginalTitle(orginalname);
-                                listitem.add(movie);
-                            }
-
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject Object = jsonArray.getJSONObject(i);
+                        if (Object.has("poster_path") && !Object.isNull("poster_path")) {
+                            String posterpath = Object.getString("poster_path");
+                            int id = Object.getInt("id");
+                            String orginalname = Object.getString("original_title");
+                            Movie movie = new Movie();
+                            movie.setPosterPath(posterpath);
+                            movie.setId(id);
+                            movie.setOriginalTitle(orginalname);
+                            listitem.add(movie);
                         }
 
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
                     }
 
+
+                } catch (JSONException e) {
+
+                    e.printStackTrace();
                 }
 
             }
+
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 String errorMessage = (error != null && error.getMessage() != null) ? error.getMessage() : "Unknown error occurred";
-                Log.d("VolleyError", errorMessage);
+                Log.e("Volley error", errorMessage);
+                Log.e("volley error", url);
             }
         });
         requestQueue.add(request);
